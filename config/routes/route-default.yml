@@ -1,8 +1,14 @@
 # Routes
 
+# _home:
+#     path:   ''
+#     controller:   'HelloController'
+#     action: 'run'
+#     method: 'GET'
+
 _home:
     path:   ''
-    controller:   'HelloController'
+    controller:   'ProjectController'
     action: 'run'
     method: 'GET'
 
