@@ -1,9 +1,9 @@
 # Routes
 
-_home:
+home:
     path:   ''
-    controller:   'HelloController'
-    action: 'run'
+    controller:   'UserController'
+    action: 'home'
     method: 'GET'
 
 _config:
@@ -11,14 +11,8 @@ _config:
     controller: 'ConfigController'
     action: 'config'
 
-project_form:
-    path: 'form/project'
-    controller: 'ProjectController'
-    action: 'getProjectForm'
-    method: 'GET'
-
-_toto:
-    path: 'toto'
-    controller: 'HelloController'
-    action: 'run'
-    method: 'GET'
+postProject:
+	path: form/project
+	controller: ProjectController
+	action: postProject
+	method: POST

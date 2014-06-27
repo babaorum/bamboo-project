@@ -2,15 +2,15 @@ form_project:
     form:
         method: POST
         action: /form/project
-        submit: Créer
+        submit: 'Cr&eacute;er'
         structure: list
     fields:
         title:
             class: title
             type: text
-	        required: true
-	        label: Titre
-	        empty: false
+            required: true
+            label: Titre
+            empty: false
         description:
-        	class: description
+            class: description
             type: textarea

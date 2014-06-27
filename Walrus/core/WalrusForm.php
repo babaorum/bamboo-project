@@ -241,8 +241,10 @@ class WalrusForm
             die;
         }
 
-        if (empty($errors) && $controller && $action) {
-            WalrusRouter::reroute($controller, $action, $param);
+        if (empty($errors)) {
+            if ($controller && $action) {
+                WalrusRouter::reroute($controller, $action, $param);
+            }
             return true;
         }
 

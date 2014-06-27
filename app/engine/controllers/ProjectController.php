@@ -3,16 +3,22 @@
 namespace app\engine\controllers;
 
 use Walrus\core\WalrusController;
+use RedBean_OODBBean;
 
 class ProjectController extends WalrusController
 {
-	public function getProjectForm()
-	{
-		$form = new WalrusForm('form_project');
-		$form->check();
-		
-		die(var_dump($form->render()));
-		$this->register('projectForm', 'coucou');
-        $this->setView('world');
-	}
+    public function postProject()
+    {
+        $projectModel = $this->model('project');
+        $response = $projectModel->create();
+        
+        if (is_object($response))
+        {
+            die (var_dump(array('project' => $response->export())));
+        }
+        else
+        {
+            die (var_dump(array('errors' => $response)));
+        }
+    }
 }
