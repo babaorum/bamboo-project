@@ -8,8 +8,8 @@
 
 _home:
     path:   ''
-    controller:   'ProjectController'
-    action: 'run'
+    controller:   'UserController'
+    action: 'home'
     method: 'GET'
 
 _config:
