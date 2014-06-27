@@ -206,13 +206,13 @@ class WalrusForm
             if (isset($check['odd']) && $check['odd'] == true && $data[$name] % 2 == 0) {// check odd
                 $errors[$name] = WalrusI18n::get('errors', 'messages', 'odd', array('attribute' => $name));
             }
-            if (isset($check['max']) && $check['max'] == true && $data[$name] > $check['max']) {// check max
+            if (isset($check['max']) && $check['max'] == true && strlen($data[$name]) > $check['max']) {// check max
                 $errors[$name] = WalrusI18n::get('errors', 'messages', 'max', array(
                     'attribute' => $name,
                     'count' => $check['max']
                 ));
             }
-            if (isset($check['min']) && $check['min'] == true && $data[$name] < $check['min']) {// check min
+            if (isset($check['min']) && $check['min'] == true && strlen($data[$name]) < $check['min']) {// check min
                 $errors[$name] = WalrusI18n::get('errors', 'messages', 'min', array(
                     'attribute' => $name,
                         'count' => $check['min']
@@ -225,8 +225,8 @@ class WalrusForm
                     'count' => $check['min']
                 ));
             }
-            if (isset($check['validate']) && preg_match($check['validate'], $data[$name])) {// check max
-                $errors[$name] = WalrusI18n::get('errors', 'messages', 'validate', array('attribute' => $name));
+            if (isset($check['validate']) && preg_match($check['validate'], $data[$name]) !== 1) {// check max
+                $errors[$name] = WalrusI18n::get('errors', 'messages', 'invalid', array('attribute' => $name));
             }
             if (isset($check['function'])) {
                 $cb = explode('::', $check['function']);
@@ -241,8 +241,12 @@ class WalrusForm
             die;
         }
 
-        if (empty($errors) && $controller && $action) {
-            WalrusRouter::reroute($controller, $action, $param);
+        if (empty($errors)) {
+
+            if ($controller && $action) {
+                return WalrusRouter::reroute($controller, $action, $param);
+            }
+
             return true;
         }
 
@@ -454,7 +458,8 @@ class WalrusForm
 
                 // Create input
                 $Tag = new Tag();
-                $Tag->create('input');
+                $type = $field['type'] == 'textarea' ? 'textarea' : 'input';
+                $Tag->create($type);
                 $Tag->setAttributes($field);
 
                 array_push($row, $Tag);
