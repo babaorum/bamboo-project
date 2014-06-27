@@ -10,3 +10,15 @@ _config:
     path: 'config'
     controller: 'ConfigController'
     action: 'config'
+
+project_form:
+    path: 'form/project'
+    controller: 'ProjectController'
+    action: 'getProjectForm'
+    method: 'GET'
+
+_toto:
+    path: 'toto'
+    controller: 'HelloController'
+    action: 'run'
+    method: 'GET'
