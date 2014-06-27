@@ -5,16 +5,5 @@
 	    <title>Walrus welcome page</title>
 	</head>
 	<body>
-	{% if error is defined %}
-		<p>
-			{{ error }}
-		</p>
-	{% else %}
-		{% for project in projects %}
-			<p>
-				{{ project.name }}
-			</p>
-		{% endfor %}
-	{% endif %}
 	</body>
 </html>

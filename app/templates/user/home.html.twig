@@ -13,20 +13,36 @@
 	<body>
 		<header>
 			 <nav>
-					<div id="logo">
-							LOGO KIKOU
-					</div> 
+				<div id="logo">
+					LOGO KIKOU
+				</div> 
 				Hello
 			</nav>
 		</header>
-			<div id="body">
+		<div id="body">
+		{% if noProject is defined %}
+			{{ noProject }}
+		{% else %}
+			{% for project in projects %}
 				<div id="project">
-					<div class="name_project">Nom</div>
-					<div class="sub_title">description :<div class="description"> Text blab bla bla bla</div></div>
-					<div class="last_use">batard</div>
-					<div class="stats">Stats</div>
+					<div class="name_project">
+						{{ project.name }}
+					</div>
+					<div class="sub_title">
+						<div class="description">
+							{{ project.description }}	
+						</div>
+					</div>
+					<div class="last_use">
+						batard
+					</div>
+					<div class="stats">
+						Stats
+					</div>
 				</div>
-			</div>
+			{% endfor %}
+		{% endif %}
+		</div>
 		<aside></aside>
 		<footer>
 

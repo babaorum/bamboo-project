@@ -8,6 +8,17 @@ class UserController extends WalrusController
 {
 	public function home()
 	{
+		$result = $this->model('project')->getProjects();
+
+		if(empty($result))
+        {
+            $this->register('noProject', 'Il n\'y a pas encore de projet');
+        }
+        else
+        {
+            $this->register('projects', $result);
+        }
+        
         $this->setView('home');
     }
 }

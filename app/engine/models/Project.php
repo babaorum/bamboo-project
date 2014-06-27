@@ -7,7 +7,7 @@ use Walrus\core\WalrusModel;
 
 class Project extends WalrusModel
 {
-	public function index()
+	public function getProjects()
 	{
 		$projects = R::findAll('project');
 		return $projects;
