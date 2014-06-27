@@ -8,7 +8,9 @@ class UserController extends WalrusController
 {
 	public function home()
 	{
-		$result = $this->model('project')->getProjects();
+		$project = $this->model('project')
+		
+		$result = $project->getProjects();
 
 		if(empty($result))
         {
@@ -18,7 +20,7 @@ class UserController extends WalrusController
         {
             $this->register('projects', $result);
         }
-        
+
         $this->setView('home');
     }
 }

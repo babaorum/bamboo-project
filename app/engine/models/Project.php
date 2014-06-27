@@ -9,7 +9,7 @@ class Project extends WalrusModel
 {
 	public function getProjects()
 	{
-		$projects = R::findAll('project');
+		$projects = R::findAll('projects');
 		return $projects;
 	}
 }

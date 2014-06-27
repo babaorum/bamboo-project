@@ -6,8 +6,5 @@ use Walrus\core\WalrusController;
 
 class ProjectController extends WalrusController
 {
-	public function run()
-    {
-    	
-    }
+    
 }
