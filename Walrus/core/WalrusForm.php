@@ -242,11 +242,11 @@ class WalrusForm
         }
 
         if (empty($errors)) {
-            
+
             if ($controller && $action) {
                 return WalrusRouter::reroute($controller, $action, $param);
             }
-            
+
             return true;
         }
 
