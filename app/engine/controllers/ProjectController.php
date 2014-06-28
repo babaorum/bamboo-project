@@ -7,6 +7,7 @@ use RedBean_OODBBean;
 
 class ProjectController extends WalrusController
 {
+    //@todelete
     public function postProject()
     {
         $projectModel = $this->model('project');
@@ -14,11 +15,11 @@ class ProjectController extends WalrusController
         
         if (is_object($response))
         {
-            die (var_dump(array('project' => $response->export())));
+            return array('project' => $response->export());
         }
         else
         {
-            die (var_dump(array('errors' => $response)));
+            return array('errors' => $response);
         }
     }
 }

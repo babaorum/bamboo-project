@@ -5,11 +5,11 @@ form_project:
         submit: 'Cr&eacute;er'
         structure: list
     fields:
-        title:
-            class: title
+        name:
+            class: name
             type: text
             required: true
-            label: Titre
+            label: Nom
             empty: false
         description:
             class: description
