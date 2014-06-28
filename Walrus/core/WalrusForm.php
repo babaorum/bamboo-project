@@ -155,8 +155,12 @@ class WalrusForm
                 $errors[$name] = WalrusI18n::get('errors', 'messages', 'blank', array('attribute' => $name));
                 continue;
             }
-            if (isset($check['empty']) && $check['empty'] == true && empty($data[$name])) {// check empty
+            if (isset($check['empty']) && $check['empty'] == true && !empty($data[$name])) {// check empty
                 $errors[$name] = WalrusI18n::get('errors', 'messages', 'empty', array('attribute' => $name));
+                continue;
+            }
+            if (isset($check['empty']) && $check['empty'] == false && empty($data[$name])) {// check empty
+                $errors[$name] = WalrusI18n::get('errors', 'messages', 'not_empty', array('attribute' => $name));
                 continue;
             }
             if (isset($check['equal_to'])) {// check equal_to
@@ -326,11 +330,10 @@ class WalrusForm
                     $Label = new Tag();
                     $Label->create('label');
 
-                    if (is_string($label)) {
-                        $Label->setAttributes('text', $label);
-                    } elseif (is_array($label)) {
-                        $Label->setAttributes($label);
-                    }
+                    $label = is_array($label)? array_merge($label, array('for' => $field['id']))
+                        : array('text' => $label, 'for' => $field['id']);
+
+                    $Label->setAttributes($label);
 
                     array_push($row, $Label);
                 }
@@ -347,12 +350,31 @@ class WalrusForm
                 }
 
                 foreach ($options as $inputKey => $text) {
+
                     // Create option
                     $Option = new Tag();
                     $Option->create('option');
-                    $Option->setAttributes(array('value' => $inputKey));
-                    $Option->inject($text);
-                    $Tag->inject($Option);
+
+                    if (is_array($text)) {
+                        $Optgroup = new Tag();
+                        $Optgroup->create('optgroup');
+                        $Optgroup->setAttributes(array('label' => $inputKey));
+
+                        foreach ($text as $keyText => $valueText) {
+                            $Option->setAttributes(array('value' => $keyText));
+                            $Option->inject($valueText);
+                            $Optgroup->inject($Option);
+                        }
+
+                        $options = $Optgroup;
+
+                    } else {
+                        $Option->setAttributes(array('value' => $inputKey));
+                        $Option->inject($text);
+                        $options = $Option;
+                    }
+
+                    $Tag->inject($options);
                 }
 
                 array_push($row, $Tag);
@@ -378,11 +400,11 @@ class WalrusForm
                     $Label = new Tag();
                     $Label->create('label');
 
-                    if (is_string($label)) {
-                        $Label->setAttributes('text', $label);
-                    } elseif (is_array($label)) {
-                        $Label->setAttributes($label);
-                    }
+                    $label = is_array($label)? array_merge($label, array('for' => $field['id']))
+                        : array('text' => $label, 'for' => $field['id']);
+
+                    $Label->setAttributes($label);
+
                     array_push($row, $Label);
                 }
 
@@ -448,11 +470,11 @@ class WalrusForm
                     $Label = new Tag();
                     $Label->create('label');
 
-                    if (is_string($label)) {
-                        $Label->setAttributes('text', $label);
-                    } elseif (is_array($label)) {
-                        $Label->setAttributes($label);
-                    }
+                    $label = is_array($label)? array_merge($label, array('for' => $field['id']))
+                        : array('text' => $label, 'for' => $field['id']);
+
+                    $Label->setAttributes($label);
+
                     array_push($row, $Label);
                 }
 
