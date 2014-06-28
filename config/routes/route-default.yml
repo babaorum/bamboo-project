@@ -2,8 +2,8 @@
 
 _home:
     path:   ''
-    controller:   'HelloController'
-    action: 'run'
+    controller:   'UserController'
+    action: 'home'
     method: 'GET'
 
 _config:
