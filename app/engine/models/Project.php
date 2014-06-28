@@ -8,6 +8,12 @@ use Walrus\core\WalrusForm;
 
 class Project extends WalrusModel
 {
+	public function getProjects()
+	{
+		$projects = R::findAll('projects');
+		return $projects;
+	}
+
     public function newProject()
     {
         $form = new WalrusForm('form_project');
@@ -47,5 +53,4 @@ class Project extends WalrusModel
 
         return $errors;
     }
-
 }

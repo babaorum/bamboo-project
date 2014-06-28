@@ -3,7 +3,6 @@
 namespace app\engine\controllers;
 
 use Walrus\core\WalrusController;
-use RedBean_OODBBean;
 
 class ProjectController extends WalrusController
 {
