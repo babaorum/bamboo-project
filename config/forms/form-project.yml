@@ -6,11 +6,13 @@ form_project:
         structure: list
     fields:
         name:
-            class: name
             type: text
-            required: true
             label: Nom
-            empty: false
+            class: name
+            required: true
+            not_empty: true
         description:
-            class: description
             type: textarea
+            label: Description
+            class: description
+            required: true
