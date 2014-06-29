@@ -1,35 +1,35 @@
 nav
 {
-	background-color:blue;
-	height:25%;
+    background-color:blue;
+    height:25%;
 
 }
 
 #logo
 {
- 	width: 25%;
+     width: 25%;
 }
 
 #body 
 {
-	width:75%
+    width:75%
 
 }
 /*Begin CSS Card project*/
 #project
 {
-	margin-top:5%;
-	margin-left:5%;
-	width:13%;
-	height:15%;
-	background-color:red;
-	position: relative;
+    margin-top:5%;
+    margin-left:5%;
+    width:13%;
+    height:15%;
+    background-color:red;
+    position: relative;
 }
 
 .name_project
 {
-	text-align:center;
-	margin:15%;
+    text-align:center;
+    margin:15%;
 
 }
 
@@ -39,8 +39,8 @@ nav
 }
 .sub_title
 {
-	font-style:bold;
-	font-size:12px;
+    font-style:bold;
+    font-size:12px;
 }
 .last_use
 {
