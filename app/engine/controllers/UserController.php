@@ -8,7 +8,15 @@ class UserController extends WalrusController
 {
     public function home()
     {
-        $projectModel = $this->model('project')
+    	//@todelete when connexion exist
+        $_SESSION['user']['id'] = 1;
+
+        //@tomove and adapt in connexion method
+        $userModel = $this->model('user');
+        $user = $userModel->getUser($_SESSION['user']['id']);
+        $_SESSION['user'] = $user->export();
+
+        $projectModel = $this->model('project');
         
         $result = $projectModel->getProjects();
 
