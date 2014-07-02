@@ -47,4 +47,9 @@ class GetField extends \Twig_Extension
 
         return $output;
     }
+
+    public function getName()
+    {
+        return 'get_field_extension';
+    }
 }
