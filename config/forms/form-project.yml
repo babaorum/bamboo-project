@@ -1,0 +1,18 @@
+form_project:
+    form:
+        method: POST
+        action: /form/project
+        submit: 'Cr&eacute;er'
+        structure: list
+    fields:
+        name:
+            type: text
+            label: Nom
+            class: name
+            required: true
+            not_empty: true
+        description:
+            type: textarea
+            label: Description
+            class: description
+            required: true

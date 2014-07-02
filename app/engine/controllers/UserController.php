@@ -23,20 +23,19 @@ class UserController extends WalrusController
             $this->reroute('user', 'login');
         }
         
-        $result = $this->projectModel->getProjects();
-
-        if(empty($result))
+        $formProject = $this->projectModel->newProject();
+        $projects = $this->projectModel->getProjects();
+        
+        if(empty($projects))
         {
             $this->register('noProject', 'Il n\'y a pas encore de projet');
         }
         else
         {
-            $this->register('projects', $result);
+            $this->register('projects', $projects);
         }
 
-        //@todelete on fix on upstream remote
-        $this->register('session', $_SESSION);
-
+        $this->register('formProject', $formProject->getFields());
         $this->setView('home');
     }
 
