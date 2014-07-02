@@ -8,7 +8,7 @@ class UserController extends WalrusController
 {
     public function home()
     {
-        $projectModel = $this->model('project')
+        $projectModel = $this->model('project');
         
         $result = $projectModel->getProjects();
 

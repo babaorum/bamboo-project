@@ -654,6 +654,7 @@ class WalrusForm
     {
         return $this->fields;
     }
+<<<<<<< HEAD
 
     /**
      * Set a particular field value.
@@ -666,4 +667,6 @@ class WalrusForm
     {
         $this->fields[$field][$key] = $value;
     }
+=======
+>>>>>>> f47872a454ec79126c15be6824e5a706e2a1c2f5
 }
