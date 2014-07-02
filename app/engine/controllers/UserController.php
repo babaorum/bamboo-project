@@ -21,7 +21,7 @@ class UserController extends WalrusController
             $this->register('projects', $projects);
         }
 
-        $this->register('formProject', $formProject->render());
+        $this->register('formProject', $formProject->getFields());
         $this->setView('home');
     }
 }

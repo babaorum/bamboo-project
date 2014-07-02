@@ -5,9 +5,10 @@
         <meta name="keywords" content="Project Manager">
         <meta name="author" content="Benjamin Guilbaud , Romain Grelet et Mathilde Husson">
         <meta charset="UTF-8 bin">
-        <link rel= "stylesheet" href= "./assets/styles/style.css"/>
-        <script type="text/javascript" src="assets/javascript/jquery-2.1.1.min"></script>
-        <script type="text/javascript" src="assets/javascript/walrus"></script>
+        <link rel= "stylesheet" href= "/assets/styles/style.css"/>
+        <script type="text/javascript" src="/assets/javascript/jquery-2.1.1.min"></script>
+        <script type="text/javascript" src="/assets/javascript/walrus"></script>
+        <script type="text/javascript" src="/assets/javascript/home.js"></script>
     </head>
 
     <body>
@@ -20,7 +21,13 @@
             </nav>
         </header>
             <div id="body">
-                <div>{{formProject|raw}}</div>
+                <div>
+                    <form id="createProject" action="/form/project" method="POST">
+                        <div>{{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
+                        <div>{{formProject.description.label}} : {{helpers.GetField.getFieldFilter(formProject.description)|raw}}</div>
+                        <input type="submit" name="submit" value="Envoyer">
+                    </form>
+                </div>
                 {% if noProject is defined %}
 		            {{ noProject }}
 		        {% else %}
