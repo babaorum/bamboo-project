@@ -14,7 +14,7 @@ class Project extends WalrusModel
 		return $projects;
 	}
 
-    public function new()
+    public function newProject()
     {
         $form = new WalrusForm('form_project');
         $form->check();
