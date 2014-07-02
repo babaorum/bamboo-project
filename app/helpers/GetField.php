@@ -4,13 +4,6 @@ namespace app\helpers;
 
 class GetField extends \Twig_Extension
 {
-    public function getFilters()
-    {
-        return array(
-            'get_field' => new \Twig_Filter_Method($this, 'getFieldFilter', array('is_safe' => array('html'))),
-        );
-    }
-
     public function getFieldFilter($field, $id = null, $cssClasses = null,$dataName = null, $dataValue = null, $addAttrName = null, $addAttrValue = null, $addAttrSingle = null)
     {
         $output = null;
@@ -53,10 +46,5 @@ class GetField extends \Twig_Extension
         }
 
         return $output;
-    }
-
-    public function getName()
-    {
-        return 'get_field_extension';
     }
 }
