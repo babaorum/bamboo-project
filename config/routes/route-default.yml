@@ -1,6 +1,6 @@
 # Routes
 
-_home:
+home:
     path:   ''
     controller:   'UserController'
     action: 'home'
@@ -10,3 +10,9 @@ _config:
     path: 'config'
     controller: 'ConfigController'
     action: 'config'
+
+postProject:
+	path: form/project
+	controller: ProjectController
+	action: postProject
+	method: POST

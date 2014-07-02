@@ -10,17 +10,18 @@ class UserController extends WalrusController
     {
         $projectModel = $this->model('project');
         
-        $result = $projectModel->getProjects();
-
-        if(empty($result))
+        $formProject = $projectModel->newProject();
+        $projects = $projectModel->getProjects();
+        if(empty($projects))
         {
             $this->register('noProject', 'Il n\'y a pas encore de projet');
         }
         else
         {
-            $this->register('projects', $result);
+            $this->register('projects', $projects);
         }
 
+        $this->register('formProject', $formProject->getFields());
         $this->setView('home');
     }
 }
