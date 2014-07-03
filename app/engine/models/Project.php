@@ -14,6 +14,11 @@ class Project extends WalrusModel
 		return $projects;
 	}
 
+    public function getProject($id)
+    {
+        return R::load('projects', $id);
+    }
+
     public function newProject()
     {
         $form = new WalrusForm('form_project');
@@ -40,6 +45,25 @@ class Project extends WalrusModel
         }
 
         return $errors;
+    }
+
+    public function delete($id)
+    {
+        $project = $this->getProject($id);
+
+        if ($project->id !== 0)
+        {
+            $test = R::trash( $project );
+
+            $project_exist = $this->getProject($id);
+
+            if ($project_exist->id === 0)
+            {
+                return $id;
+            }
+        }
+
+        return false;
     }
 
     public function check()
