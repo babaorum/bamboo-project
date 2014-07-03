@@ -10,6 +10,11 @@ body
 	font-family: 'Arimo', sans-serif;
 }
 
+.float-left
+{
+	float: left;
+}
+
 /* Navbar */
 	#header
 	{
@@ -28,54 +33,75 @@ body
 		padding: 0 10px;
 		float: left;
 		background-color: #8AC7A7;
+		transition: background-color 0.3s;
 	}
 	#logout:hover
 	{
-		background-color: #73B:*/D96;
+		background-color: #73BD96;
 	}
 	nav
 	{
 	 	padding-left: 10px;
 	}
 
+/* Card project */
+
 	#projects 
 	{
 		margin: 10px 50px;
+		width: 100%;
 	}
-
-/*Begin CSS Card project*/
-.card-project
-{
-	width: 300px;
-	background-color: #ECE7CE;
-	box-shadow: 1px 1px 3px 2px #AAAAAA;
-	position: relative;
-	margin-top: 20px;
-}
-
-.title-project
-{
-	background-color: #D4CFB9;
-	text-align: center;
-	padding: 10px;
-}
-
-.description
-{
-
-}
-.sub_title
-{
-	font-style: bold;
-	font-size: 12px;
-}
-.last_use
-{
-	margin: 15%;
-}
+	.card-project
+	{
+		width: 300px;
+		background-color: #ECE7CE;
+		box-shadow: 1px 1px 3px 2px #AAAAAA;
+		margin: 20px;
+	}
+	.title-project
+	{
+		background-color: #D4CFB9;
+		text-align: center;
+		padding: 10px;
+		border-bottom: solid #CCD4B9;
+	}
+	.information
+	{
+		margin: 15px;
+		padding-bottom: 15px;
+		border-bottom: solid #CCD4B9 2px;
+	}
 
 .stats
 {
-	margin: 15%;
+	padding: 10px;
+	background-color: #D4CDB9;
+	transition: background-color 0.3s;
+}
+.stats:hover
+{
+	background-color: #CAC2A9;
+}
+.arrow-right 
+{
+	width: 0; 
+	height: 0; 
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid #A3956A;
+
+	margin: 5px;
+	float: right;
+}
+.arrow-down 
+{
+	width: 0; 
+	height: 0; 
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #A3956A;
+
+	margin: 7px;
+	float: right;
 }
 /*End CSS Card project

@@ -23,14 +23,14 @@
         <div id="header">
              <nav>
              	<div id="logo">
-                	<img src="assets/images/pandaBamboo.png" height="50"> 
+                	<img src="assets/images/logoBamboo3.png" height="50"> 
              	</div>
              	<div id="logout">
              		Deconnexion
              	</div>
             </nav>
         </div>
-        <div id="projects">
+        <div id="projects" class="">
             <!-- <div>
                 <form id="createProject" action="/form/project" method="POST">
                     <div>{{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
@@ -43,22 +43,26 @@
 	        {% else %}
 	            {% if projects is defined %}
 	                {% for project in projects %}
-	                    <div class="card-project">
+	                    <div class="card-project float-left">
+	                        {% if project.name is defined %}
 	                        <div class="title-project">
-	                            {% if project.name is defined %}
-	                                {{ project.name }}
-	                            {% endif %}
+	                            {{ project.name }}
 	                        </div>
-                            <div class="description">
-                                {% if project.description is defined %}
-                                    {{ project.description }}
-                                {% endif %}
+	                        {% endif %}
+                            {% if project.description is defined %}
+                            <div class="description, information">
+                                {{ project.description }}
                             </div>
-	                        <div class="last_use">
-	                            batard
+                            {% endif %}
+                            {% if project.date_update is defined %}
+	                        <div class="last_use, information">
+	                            Derniere mise a jour le 
+	                            {{ project.date_update }}
 	                        </div>
+                            {% endif %}
 	                        <div class="stats">
-	                            Stats
+	                            Statistiques
+	                            <div class="arrow-down"></div>
 	                        </div>
 	                    </div>
 	                {% endfor %}
