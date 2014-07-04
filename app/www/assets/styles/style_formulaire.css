@@ -1,0 +1,133 @@
+*
+{ 
+	margin:0;
+	padding:0;
+	border:0; 
+	box-sizing:border-box !important;
+	-moz-box-sizing:border-box !important; 
+}
+
+nav
+{
+	background-color:#86C540;
+}
+
+#logo
+{
+ 	width: 25%;
+}
+body
+{
+	background-color:#404040;
+}
+#wrapper 
+{
+	height:auto;
+	width:1080px;
+}
+
+/* End Panel*/
+/*Formulaire*/
+	label
+	{
+		margin:15px;
+	}
+	h4
+	{
+		text-align:center;
+		margin:15px;
+	}
+	input
+	{
+		background-color:#DDDDDD;
+	}
+	fieldset
+	{
+		width:500px;
+		height:500px;
+		margin:25%;
+		background-color:white;
+	}
+	textarea
+	{
+		border-style:solid !important;
+		border-color:black !important;
+		border:1px !important;	}
+	.colorbox
+	{
+		height:20px;
+		width:10px;
+		background-color:black;
+		position:relative;
+		float:left;
+		margin-right:10px;
+		cursor:pointer;
+	}
+	#colorbox_red
+	{
+		margin-left:15px;
+		background-color:red;
+	}
+	#colorbox_green
+	{
+		background-color:green;
+	}
+	#colorbox_blue
+	{
+		background-color:blue;
+	}
+	#colorbox_orange
+	{
+		background-color:orange;
+	}
+	#colorbox_yellow
+	{
+		background-color:yellow;
+	}
+	/*calendar*/
+	#date_begin
+	{
+		margin:15px;
+	}
+	#date_end
+	{
+		margin:15px;
+	}
+	/*calendar*/
+	#nom
+	{
+
+	}
+	#calendar
+	{
+
+	}
+	#description
+	{
+
+	}
+	#participant
+	{
+
+	}
+	#wrapper_colorbox
+	{
+
+	}
+	#ui-datepicker-div
+	{
+		background-color:#909090;
+	}
+	#ui-datepicker-calendar
+	{
+		border-style:solid !important;
+		border-color:black !important;
+		border:1px !important;
+	}
+	.ui-datepicker .ui-widget .ui-widget-content .ui-helper-clearfix .ui-corner-all
+	{
+		border-style:solid;
+		border-color:black;
+		border:1px;
+	}
+/*Formulaire*/
