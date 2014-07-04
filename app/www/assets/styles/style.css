@@ -22,6 +22,10 @@ body
 		background-color: #9BCFB4; /*#84C5A3*/ /*#86C584*/
 		height: 50px;
 	}
+	nav
+	{
+	 	padding-left: 10px;
+	}
 	#logo
 	{
 		float: left;
@@ -39,17 +43,13 @@ body
 	{
 		background-color: #73BD96;
 	}
-	nav
-	{
-	 	padding-left: 10px;
-	}
 
 /* Card project */
 
 	#projects 
 	{
 		margin: 10px 50px;
-		width: 100%;
+		width: 1700px;
 	}
 	.card-project
 	{
@@ -108,9 +108,21 @@ body
 	.statistics
 	{
 		clear: both;
-		width: 1700px;
+		width: 1660px;
 		height: 100px;
 		margin: 20px;
 		background-color: #E3DFD2;
 		box-shadow: 1px 1px 3px 2px #AAAAAA;
+	}
+
+/* Sidebar */
+	#right-bar
+	{
+		z-index: -1;
+	    width: 20%;
+	    position: fixed;
+	    top: 0;
+	    right: 0;
+	    height: 100%;
+	    background-color: yellow;
 	}

@@ -32,13 +32,13 @@
         </header>
         <div id="projects" class="">
         	<div id="first-line">
-	            <!-- <div>
+	            <div>
 	                <form id="createProject" action="/form/project" method="POST">
 	                    <div>{{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
 	                    <div>{{formProject.description.label}} : {{helpers.GetField.getFieldFilter(formProject.description)|raw}}</div>
 	                    <input type="submit" name="submit" value="Envoyer">
 	                </form>
-	            </div> -->
+	            </div>
 	            {% if noProject is defined %}
 		            {{ noProject }}
 		        {% else %}
@@ -72,8 +72,8 @@
 			</div>
 			<div class="statistics">
 			</div>
+        	<div id="right-bar"></div>
         </div>
-        <aside></aside>
         <footer>
 
         </footer>
