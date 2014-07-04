@@ -16,7 +16,7 @@ body
 }
 
 /* Navbar */
-	#header
+	header
 	{
 		z-index: 1;
 		background-color: #9BCFB4; /*#84C5A3*/ /*#86C584*/
