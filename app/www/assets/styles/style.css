@@ -71,37 +71,46 @@ body
 		padding-bottom: 15px;
 		border-bottom: solid #CCD4B9 2px;
 	}
+	.stats
+	{
+		padding: 10px;
+		background-color: #D4CDB9;
+		transition: background-color 0.3s;
+	}
+	.stats:hover
+	{
+		background-color: #CAC2A9;
+	}
+	.arrow-right 
+	{
+		width: 0; 
+		height: 0; 
+		border-top: 7px solid transparent;
+		border-bottom: 7px solid transparent;
+		border-left: 7px solid #A3956A;
 
-.stats
-{
-	padding: 10px;
-	background-color: #D4CDB9;
-	transition: background-color 0.3s;
-}
-.stats:hover
-{
-	background-color: #CAC2A9;
-}
-.arrow-right 
-{
-	width: 0; 
-	height: 0; 
-	border-top: 7px solid transparent;
-	border-bottom: 7px solid transparent;
-	border-left: 7px solid #A3956A;
+		margin: 5px;
+		float: right;
+	}
+	.arrow-down 
+	{
+		width: 0; 
+		height: 0; 
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+		border-top: 7px solid #A3956A;
 
-	margin: 5px;
-	float: right;
-}
-.arrow-down 
-{
-	width: 0; 
-	height: 0; 
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-top: 7px solid #A3956A;
+		margin: 7px;
+		float: right;
+	}
 
-	margin: 7px;
-	float: right;
-}
-/*End CSS Card project
+/* Statistics */
+	.statistics
+	{
+		clear: both;
+		width: 1700px;
+		height: 100px;
+		margin: 20px;
+		background-color: #E3DFD2;
+		box-shadow: 1px 1px 3px 2px #AAAAAA;
+	}
