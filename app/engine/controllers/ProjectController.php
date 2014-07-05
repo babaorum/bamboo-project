@@ -25,7 +25,7 @@ class ProjectController extends WalrusController
         if ($id !== null)
         {
             $project = $projectModel->getProject($id);
-            if ($project->id !== 0)
+            if (!is_null($project))
             {
                 $formUpdateHelper = WalrusHelpers::getHelper('FormUpdate', true);
                 $formFields = $formUpdateHelper->putDataIntoForm($formFields, $project);

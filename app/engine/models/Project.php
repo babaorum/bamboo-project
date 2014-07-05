@@ -55,7 +55,7 @@ class Project extends WalrusModel
     public function update($id)
     {
         $project = $this->getProject($id);
-        if($project->id !== 0)
+        if(!is_null($project))
         {
             $form = new WalrusForm('form_project');
             $errors = $this->check($project->name);
