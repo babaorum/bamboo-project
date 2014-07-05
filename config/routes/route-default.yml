@@ -1,18 +1,26 @@
 # Routes
 
 home:
-    path:   ''
-    controller:   'UserController'
-    action: 'home'
-    method: 'GET'
+    path: ''
+    controller: UserController
+    action: home
+    method: GET
 
 _config:
-    path: 'config'
-    controller: 'ConfigController'
-    action: 'config'
+    path: config
+    controller: ConfigController
+    action: config
 
 postProject:
-	path: form/project
-	controller: ProjectController
-	action: postProject
-	method: POST
+    path: projects
+    controller: ProjectController
+    action: postProject
+    method: POST
+
+deleteProject:
+    path: projects/:id
+    controller: ProjectController
+    action: deleteProject
+    filters:
+        require:
+            id: '[\d-]+'
