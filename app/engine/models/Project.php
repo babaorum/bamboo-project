@@ -5,16 +5,22 @@ namespace app\engine\models;
 use R;
 use Walrus\core\WalrusModel;
 use Walrus\core\WalrusForm;
+use Walrus\core\WalrusHelpers;
 
 class Project extends WalrusModel
 {
-	public function getProjects()
-	{
-		$projects = R::findAll('projects');
-		return $projects;
-	}
+    public function getProjects()
+    {
+        $projects = R::findAll('projects');
+        return $projects;
+    }
 
-    public function newProject()
+    public function getProject($id)
+    {
+        return R::load('projects', $id);
+    }
+
+    public function getForm()
     {
         $form = new WalrusForm('form_project');
         $form->check();
