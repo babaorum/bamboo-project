@@ -15,7 +15,25 @@ postProject:
     path: projects
     controller: ProjectController
     action: postProject
-    method: POST
+
+getFormProject:
+    path: projects/edit/:id
+    controller: ProjectController
+    action: getFormProject
+    method: GET
+    filters:
+        default:
+            id: null
+        require:
+            id: '[\d-]+'
+
+putProject:
+    path: projects/update/:id
+    controller: ProjectController
+    action: putProject
+    filters:
+        require:
+            id: '[\d-]+'
 
 deleteProject:
     path: projects/:id

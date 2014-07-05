@@ -10,7 +10,7 @@ class UserController extends WalrusController
     {
         $projectModel = $this->model('project');
         
-        $formProject = $projectModel->newProject();
+        $formProject = $projectModel->getForm();
         $projects = $projectModel->getProjects();
         if(empty($projects))
         {
