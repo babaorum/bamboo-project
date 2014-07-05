@@ -36,7 +36,8 @@ class GetField extends \Twig_Extension
         }
         elseif ($field['type'] == 'textarea')
         {
-            $output = '<textarea '.$attr.' '.$name.'></textarea>';
+            $value = (!empty($field['value'])) ? $field['value'] : '';
+            $output = '<textarea '.$attr.' '.$name.'>'.$value.'</textarea>';
         }
         else
         {
