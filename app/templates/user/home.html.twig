@@ -23,18 +23,18 @@
         <header>
              <nav>
              	<div id="logo">
-                	<img src="assets/images/logoBamboo3.png" height="50"> 
+                	<img src="assets/images/logoBamboo3.png" height="50">
              	</div>
-             	<div id="logout">
+             	<a href="#" id="logout">
              		Deconnexion
-             	</div>
+             	</a>
             </nav>
         </header>
-        <div id="projects" class="">
+        <div id="projects">
             <div>
                 <form id="createProject" action="/form/project" method="POST">
-                    <div>{{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
-                    <div>{{formProject.description.label}} : {{helpers.GetField.getFieldFilter(formProject.description)|raw}}</div>
+                    <div><label>{{formProject.name.label}} : </label>{{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
+                    <div><label>{{formProject.description.label}} : </label>{{helpers.GetField.getFieldFilter(formProject.description)|raw}}</div>
                     <input type="submit" name="submit" value="Envoyer">
                 </form>
             </div>
@@ -43,21 +43,30 @@
 	        {% else %}
 	            {% if projects is defined %}
 	                {% for batch in projects|batch(4) %}
-	    				<div id="first-line">
+	    				<div>
 		                	{% for project in batch %}
 			                    <div class="card-project float-left">
 			                        {% if project.name is defined %}
 			                        <div class="title-project">
 			                            {{ project.name }}
+			                            <div class="card-action">
+	             							<a href="#">
+					                            <img src="assets/images/edit.png" height="25">
+					                        </a>
+					                        &nbsp;
+	             							<a href="#">
+					                            <img src="assets/images/close.png" height="25">
+					                        </a>
+			                        	</div>
 			                        </div>
 			                        {% endif %}
 		                            {% if project.description is defined %}
-		                            <div class="description, information">
+		                            <div class="description information">
 		                                {{ project.description }}
 		                            </div>
 		                            {% endif %}
 		                            {% if project.date_update is defined %}
-			                        <div class="last_use, information">
+			                        <div class="last-use information">
 			                            Derniere mise a jour le 
 			                            {{ project.date_update }}
 			                        </div>
