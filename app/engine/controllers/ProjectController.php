@@ -22,4 +22,19 @@ class ProjectController extends WalrusController
         
         $this->go('/');
     }
+
+    public function boardProject($id)
+    {
+        $projectModel = $this->model('project');
+        $project = $projectModel->getProject($id);
+		if(!is_null($project))
+		{
+			$this->register('project', $project->export());
+			$this->setView('project');
+		}
+		else
+		{
+			$this->reroute('user', 'home');
+		}
+    }
 }

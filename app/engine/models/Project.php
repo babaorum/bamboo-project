@@ -16,7 +16,12 @@ class Project extends WalrusModel
 
     public function getProject($id)
     {
-        return R::load('projects', $id);
+        $project = R::load('projects', $id);
+        if ($project->id !== 0)
+        {
+            return $project;
+        }
+        return null;
     }
 
     public function newProject()
@@ -51,13 +56,13 @@ class Project extends WalrusModel
     {
         $project = $this->getProject($id);
 
-        if ($project->id !== 0)
+        if (!is_null($project))
         {
             $test = R::trash( $project );
 
             $project_exist = $this->getProject($id);
 
-            if ($project_exist->id === 0)
+            if (is_null($project_exist))
             {
                 return $id;
             }
