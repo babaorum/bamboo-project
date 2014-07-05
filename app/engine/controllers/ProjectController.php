@@ -3,6 +3,7 @@
 namespace app\engine\controllers;
 
 use Walrus\core\WalrusController;
+use Walrus\core\WalrusHelpers;
 
 class ProjectController extends WalrusController
 {
@@ -15,10 +16,9 @@ class ProjectController extends WalrusController
         $this->go('/');
     }
 
-    public function getFormProject($id)
+    public function getFormProject($id, $errors = array())
     {
-    	$view = 'create';
-    	$projectModel = $this->model('project');
+        $projectModel = $this->model('project');
         
         $formFields = $projectModel->getForm($id)->getFields();
 
@@ -29,20 +29,33 @@ class ProjectController extends WalrusController
             {
                 $formUpdateHelper = WalrusHelpers::getHelper('FormUpdate', true);
                 $formFields = $formUpdateHelper->putDataIntoForm($formFields, $project);
-            	$view = 'update';
+
+                $this->register('errors', $errors);
+                $this->register('project', $project->export());
+                $this->register('formProject', $formFields);
+                $this->setView('update');
+            }
+            else
+            {
+                $this->go('/');
             }
         }
-
-        $this->register('formProject', $formFields);
-        $this->setView($view);
+        else
+        {
+            $this->go('/');
+        }
     }
 
-    public function putProject()
+    public function putProject($id)
     {
-    	$projectModel = $this->model('project');
-    	$response = $projectModel->update();
-
-    	$this->go('/');
+        $projectModel = $this->model('project');
+        $response = $projectModel->update($id);
+        if(!is_object($response) && $response !== false)
+        {
+            $this->reroute('project', 'getFormProject', array($id, $response));
+        }
+        
+        $this->go('/');
     }
 
     public function deleteProject($id)

@@ -5,7 +5,6 @@ namespace app\engine\models;
 use R;
 use Walrus\core\WalrusModel;
 use Walrus\core\WalrusForm;
-use Walrus\core\WalrusHelpers;
 
 class Project extends WalrusModel
 {
@@ -48,6 +47,28 @@ class Project extends WalrusModel
         return $errors;
     }
 
+    public function update($id)
+    {
+        $project = $this->getProject($id);
+        if($project->id !== 0)
+        {
+            $form = new WalrusForm('form_project');
+            $errors = $this->check($project->name);
+            if($form->check() && empty($errors))
+            {
+                $project->import($_POST, 'name,description');
+                R::store($project);
+                return $project;
+            }
+            elseif(!$form->check())
+            {
+                $errors = array_merge($errors, $form->check());
+            }
+            return $errors;
+        }
+        return false;
+    }
+
     public function delete($id)
     {
         $project = $this->getProject($id);
@@ -67,13 +88,13 @@ class Project extends WalrusModel
         return false;
     }
 
-    public function check()
+    public function check($exception = null)
     {
         $errors = array();
         $project = R::findOne('projects', 'name = :name', [':name' => $_POST['name']]);
-        if (!is_null($project))
+        if (!is_null($project->name) && ($exception == null || $project->name !== $exception))
         {
-            $errors['name'] = 'Le nom d\'un projet doit &ecirc;tre unique'; 
+            $errors['name'][] = 'Le nom d\'un projet doit &ecirc;tre unique'; 
         }
 
         return $errors;
