@@ -48,6 +48,25 @@ class Project extends WalrusModel
         return $errors;
     }
 
+    public function delete($id)
+    {
+        $project = $this->getProject($id);
+
+        if ($project->id !== 0)
+        {
+            $test = R::trash( $project );
+
+            $project_exist = $this->getProject($id);
+
+            if ($project_exist->id === 0)
+            {
+                return $id;
+            }
+        }
+
+        return false;
+    }
+
     public function check()
     {
         $errors = array();

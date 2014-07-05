@@ -44,4 +44,12 @@ class ProjectController extends WalrusController
 
     	$this->go('/');
     }
+
+    public function deleteProject($id)
+    {
+        $projectModel = $this->model('project');
+        $response = $projectModel->delete($id);
+        
+        $this->go('/');
+    }
 }
