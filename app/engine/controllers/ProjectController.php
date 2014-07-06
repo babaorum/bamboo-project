@@ -66,7 +66,7 @@ class ProjectController extends WalrusController
         $this->go('/');
     }
 
-    public function boardProject($id)
+    public function boardProject($id, $errors = array())
     {
         $projectModel = $this->model('project');
         $taskModel = $this->model('task');
@@ -75,8 +75,10 @@ class ProjectController extends WalrusController
         if(!is_null($project))
         {
             $formTask = $taskModel->getForm();
+            $tasks = $taskModel->getTasks($id);
 
             $this->register('formTask', $formTask->getFields());
+            $this->register('tasks', $tasks);
             $this->register('project', $project->export());
             $this->setView('project');
         }
