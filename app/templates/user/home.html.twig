@@ -48,7 +48,9 @@
 			                    <div class="card-project float-left">
 			                        {% if project.name is defined %}
 			                        <div class="title-project">
-			                            {{ project.name }}
+                                        <a href="/projects/{{project.id}}">
+    			                            {{ project.name }}
+                                        </a>
 			                            <div class="card-action">
 	             							<a href="#">
 					                            <img src="assets/images/edit.png" height="25">
