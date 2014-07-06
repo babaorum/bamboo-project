@@ -3,11 +3,17 @@
         <title>Bamboo Project</title>
     </head>
     <body>
-        {{dump(formTask.color)}}
         <a href="/"><button>Accueil</button></a>
         <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
         <h2>{{project.description}}</h2>
         <div>
+            <ul class="errors">
+                {% for errorTag in errors %}
+                    {% for error in errorTag %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
             <form action="/tasks/create/{{project.id}}" method="POST">
                 <div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
                 <div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
@@ -15,6 +21,16 @@
                 <div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
                 <input type="submit" name="submit" value="Cr&eacute;er">
             </form>
+        </div>
+        <div>
+            {% for task in tasks %}
+                <div>{{task.id}}</div>
+                <div>{{task.name}}</div>
+                <div>{{task.description}}</div>
+                <div>{{task.color}}</div>
+                <div>{{task.deadline}}</div>
+                <br>
+            {% endfor %}
         </div>
     </body>
 </html>

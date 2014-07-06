@@ -16,6 +16,6 @@ class TaskController extends WalrusController
         {
             $errors = $response;
         }
-        $this->reroute('project', 'getFormProject', array($id, $errors));
+        $this->reroute('project', 'boardProject', array($id, $errors));
     }
 }
