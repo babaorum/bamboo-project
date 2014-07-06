@@ -8,6 +8,11 @@ use Walrus\core\WalrusForm;
 
 class Task extends WalrusModel
 {
+	public function getTasks($project_id)
+	{
+		return R::find('tasks', 'projects_id = :project_id', ['project_id' => $project_id]);
+	}
+
     public function getForm()
     {
         $form = new WalrusForm('form_task');
