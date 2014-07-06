@@ -1,56 +1,172 @@
-nav
+/* To fix blank frame */
+*
 {
-	background-color:blue;
-	height:25%;
-
+	margin: 0px;
 }
 
-#logo
+body
 {
- 	width: 25%;
+	background-color: #E6F3E6;
+	font-family: 'Arimo', sans-serif;
 }
 
-#body 
+a
 {
-	width:75%
-
-}
-/*Begin CSS Card project*/
-#project
-{
-	margin-top:5%;
-	margin-left:5%;
-	width:13%;
-	height:15%;
-	background-color:red;
-	position: relative;
+	text-decoration: none;
 }
 
-.name_project
-{
-	text-align:center;
-	margin:15%;
+/* Navbar */
+	header
+	{
+		z-index: 1;
+		background-color: #9BCFB4; /*#84C5A3*/ /*#86C584*/
+		height: 50px;
+	}
+	nav
+	{
+	 	padding-left: 10px;
+	}
+	#logo
+	{
+		float: left;
+	}
+	#logout
+	{
+		height: 50px;
+		line-height: 50px;
+		padding: 0 10px;
+		float: left;
+		background-color: #8AC7A7;
+		transition: background-color 0.3s;
+		text-decoration: none;
+		color: #000000;
+	}
+	#logout:hover
+	{
+		background-color: #73BD96;
+	}
 
-}
+/* Card project */
 
-.description
-{
+	#projects 
+	{
+		margin: 10px 50px;
+		width: 80%;
+	}
+	.card-project
+	{
+		width: 300px;
+		background-color: #ECE7CE;
+		/*box-shadow: 0px -1px 15px -5px #AAAAAA;*/
+		border: 1px solid;
+		border-color: #AAAAAA #DDDDDD #E3DFD2;
+		margin: 20px 20px 0px 20px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		display: inline-block;
+	}
+	.title-project
+	{
+		background-color: #D4CFB9;
+		text-align: center;
+		padding: 10px;
+		border-bottom: solid #CCD4B9;
+	}
+	.card-action
+	{
+		float: right;
+	}
+	.description
+	{
+		height: 160px;
+	}
+	.last-use
+	{
+		height: 40px;
+	}
+	.information
+	{
+		margin: 15px;
+		padding-bottom: 15px;
+		border-bottom: solid #CCD4B9 2px;
+	}
+	.stats
+	{
+		padding: 10px;
+		background-color: #D4CDB9;
+		transition: background-color 0.3s;
+	}
+	.stats:hover
+	{
+		background-color: #CAC2A9;
+	}
+	.arrow-right 
+	{
+		width: 0; 
+		height: 0; 
+		border-top: 7px solid transparent;
+		border-bottom: 7px solid transparent;
+		border-left: 7px solid #A3956A;
 
-}
-.sub_title
-{
-	font-style:bold;
-	font-size:12px;
-}
-.last_use
-{
+		margin: 5px;
+		float: right;
+	}
+	.arrow-down 
+	{
+		width: 0; 
+		height: 0; 
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+		border-top: 7px solid #A3956A;
 
-margin:15%;
-}
+		margin: 7px;
+		float: right;
+	}
 
-.stats
-{
+/* Statistics */
+	.statistics
+	{
+		clear: both;
+		width: 1339px;
+		height: 100px;
+		margin: 0px 20px 20px 20px;
+		background-color: #E3DFD2;
+		/*box-shadow: 0px 5px 5px -5px #AAAAAA;*/
+		border: 1px solid;
+		border-color: #E3DFD2 #DDDDDD #AAAAAA;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
 
-margin:15%;
-}
-/*End CSS Card project*/
+/* Sidebar */
+	#right-bar
+	{
+		z-index: -1;
+	    width: 320px;
+	    position: fixed;
+	    top: 0;
+	    right: 0;
+	    height: 100%;
+	    background-color: #D1DFD1;
+	}
+
+/* Form */
+	form
+	{
+		width: 300px;
+		border: 1px solid;
+		border-color: #EEEEEE #DDDDDD #CCCCCC;
+		background-color: #EFEFEF;
+		padding: 10px;
+	}
+	label
+	{
+		display: inline-block;
+		width: 100px;
+		margin: 10px;
+	}
+	input
+	{
+		display: inline-block;
+		width: 170px;
+	}
