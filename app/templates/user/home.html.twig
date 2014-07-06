@@ -22,7 +22,7 @@
         </header>
             <div id="body">
                 <div>
-                    <form id="createProject" action="/projects/" method="POST">
+                    <form id="createProject" action="/projects/create" method="POST">
                         <div>{{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
                         <div>{{formProject.description.label}} : {{helpers.GetField.getFieldFilter(formProject.description)|raw}}</div>
                         <input type="submit" name="submit" value="Envoyer">
