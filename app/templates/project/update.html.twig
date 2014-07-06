@@ -6,8 +6,8 @@
         <ul class="errors">
             {% for errorTag in errors %}
                 {% for error in errorTag %}
-                	<li>{{error}}</li>
-            	{% endfor %}
+                    <li>{{error}}</li>
+                {% endfor %}
             {% endfor %}
         </ul>
         <form action="/projects/update/{{project.id}}" method="POST">

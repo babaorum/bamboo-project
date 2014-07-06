@@ -14,15 +14,25 @@
     <body>
         <header>
              <nav>
-             	<div id="logo">
+             	<a href="/" id="logo">
                 	<img src="../assets/images/logoBamboo3.png" height="50">
-             	</div>
+             	</a>
              	<a href="#" id="logout">
              		Deconnexion
              	</a>
             </nav>
         </header>
-        <h1>Vous êtes sur la board du projet {{project.name}}</h1>
+        {{dump(formTask.color)}}
+        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
         <h2>{{project.description}}</h2>
+        <div>
+            <form action="/tasks/create/{{project.id}}" method="POST">
+                <div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
+                <div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
+                <div>{{formTask.color.label}} : {{helpers.GetField.getFieldFilter(formTask.color)|raw}}</div>
+                <div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
+                <input type="submit" name="submit" value="Cr&eacute;er">
+            </form>
+        </div>
     </body>
 </html>
