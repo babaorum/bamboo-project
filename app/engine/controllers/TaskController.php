@@ -11,6 +11,11 @@ class TaskController extends WalrusController
         $taskModel = $this->model('task');
         $response = $taskModel->create($project_id);
         
-        $this->go('/');
+        $errors = array();
+        if(!is_object($response) && $response !== false)
+        {
+            $errors = $response;
+        }
+        $this->reroute('project', 'getFormProject', array($id, $errors));
     }
 }

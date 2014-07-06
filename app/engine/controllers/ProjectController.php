@@ -72,17 +72,17 @@ class ProjectController extends WalrusController
         $taskModel = $this->model('task');
 
         $project = $projectModel->getProject($id);
-		if(!is_null($project))
-		{
-			$formTask = $taskModel->getForm();
+        if(!is_null($project))
+        {
+            $formTask = $taskModel->getForm();
 
             $this->register('formTask', $formTask->getFields());
             $this->register('project', $project->export());
-			$this->setView('project');
-		}
-		else
-		{
-			$this->reroute('user', 'home');
-		}
+            $this->setView('project');
+        }
+        else
+        {
+            $this->reroute('user', 'home');
+        }
     }
 }

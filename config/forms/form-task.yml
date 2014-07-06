@@ -20,6 +20,7 @@ form_task:
             label: Couleur
             type: select
             not_empty: false
+            class: color
             options:
                 blue:
                     label: Bleu
