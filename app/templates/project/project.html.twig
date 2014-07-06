@@ -3,8 +3,18 @@
         <title>Bamboo Project</title>
     </head>
     <body>
+    	{{dump(formTask.color)}}
         <a href="/"><button>Accueil</button></a>
-        <h1>Vous êtes sur la board du projet {{project.name}}</h1>
+        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
         <h2>{{project.description}}</h2>
+    	<div>
+    		<form action="/tasks/create/{{project.id}}" method="POST">
+    			<div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
+    			<div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
+    			<div>{{formTask.color.label}} : {{helpers.GetField.getFieldFilter(formTask.color)|raw}}</div>
+    			<div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
+    			<input type="submit" name="submit" value="Cr&eacute;er">
+    		</form>
+    	</div>
     </body>
 </html>
