@@ -69,15 +69,20 @@ class ProjectController extends WalrusController
     public function boardProject($id)
     {
         $projectModel = $this->model('project');
+        $taskModel = $this->model('task');
+
         $project = $projectModel->getProject($id);
-		if(!is_null($project))
-		{
-			$this->register('project', $project->export());
-			$this->setView('project');
-		}
-		else
-		{
-			$this->reroute('user', 'home');
-		}
+        if(!is_null($project))
+        {
+            $formTask = $taskModel->getForm();
+
+            $this->register('formTask', $formTask->getFields());
+            $this->register('project', $project->export());
+            $this->setView('project');
+        }
+        else
+        {
+            $this->reroute('user', 'home');
+        }
     }
 }

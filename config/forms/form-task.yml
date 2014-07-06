@@ -1,0 +1,39 @@
+form_task:
+    form:
+        method: POST
+        action: /tasks
+        submit: 'Cr&eacute;er'
+        structure: list
+    fields:
+        name:
+            type: text
+            label: Nom
+            class: name
+            required: true
+            not_empty: true
+        description:
+            type: textarea
+            label: Description
+            class: description
+            required: true
+        color:
+            label: Couleur
+            type: select
+            not_empty: false
+            class: color
+            options:
+                blue:
+                    label: Bleu
+                green:
+                    label: Vert
+                yellow:
+                    label: Jaune
+                orange:
+                    label: Orange
+                red:
+                    label: Rouge
+        deadline:
+            type: date
+            label: Dead-line
+            class: deadline
+            required: true

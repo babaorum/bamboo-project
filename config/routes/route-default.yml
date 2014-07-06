@@ -12,7 +12,7 @@ _config:
     action: config
 
 postProject:
-    path: projects
+    path: projects/create
     controller: ProjectController
     action: postProject
 
@@ -50,3 +50,11 @@ boardProject:
     filters:
         require:
             id: '[\d-]+'
+
+postTask:
+    path: tasks/create/:project_id
+    controller: TaskController
+    action: postTask
+    filters:
+        require:
+            project_id: '[\d-]+'
