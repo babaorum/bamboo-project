@@ -22,21 +22,22 @@ class GetField extends \Twig_Extension
 
         if ($field['type'] == 'select')
         {
-            $options = null;
-            foreach ($field['options'] as $option)
+            $options = (isset($field['not_empty']) && $field['not_empty'] == false) ? '<option value=""></option>' : '';
+            foreach ($field['options'] as $key => $option)
             {
-                $val = (!empty($option['value'])) ? 'value="'.$option['value'].'"' : '';
+                $val = 'value="'.$key.'"';
                 $label = (!empty($option['label'])) ? $option['label'] : 'label...';
-                $selected = ($field['value'] == $option['value'])? 'selected':'';
+                $selected = (!empty($field['value']) && $field['value'] == $option['value'])? 'selected':'';
                 $option = '<option '.$selected.' '.$val.'>'.$label.'</option>';
                 $options .= $option;
             }
-
+            
             $output = '<select '.$attr.' '.$name.' '.$data.'>'.$options.'</select>';
         }
         elseif ($field['type'] == 'textarea')
         {
-            $output = '<textarea '.$attr.' '.$name.'></textarea>';
+            $value = (!empty($field['value'])) ? $field['value'] : '';
+            $output = '<textarea '.$attr.' '.$name.'>'.$value.'</textarea>';
         }
         else
         {

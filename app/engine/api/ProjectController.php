@@ -20,4 +20,22 @@ class ProjectController extends WalrusAPI
             return array('errors' => $response);
         }
     }
+
+    public function deleteProject()
+    {
+        $projectModel = $this->model('project');
+        $response = $projectModel->delete();
+
+        if(is_numeric($response))
+        {
+            return array(
+                'code' => 204,
+                'project_id' => $response
+            );
+        }
+
+        return array(
+            'code' => 400
+        );
+    }
 }

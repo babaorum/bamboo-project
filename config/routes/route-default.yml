@@ -1,18 +1,78 @@
 # Routes
 
 home:
-    path:   ''
-    controller:   'UserController'
-    action: 'home'
-    method: 'GET'
+    path: ''
+    controller: UserController
+    action: home
+    method: GET
 
 _config:
-    path: 'config'
-    controller: 'ConfigController'
-    action: 'config'
+    path: config
+    controller: ConfigController
+    action: config
 
 postProject:
-	path: form/project
-	controller: ProjectController
-	action: postProject
-	method: POST
+    path: projects/create
+    controller: ProjectController
+    action: postProject
+
+getFormProject:
+    path: projects/edit/:id
+    controller: ProjectController
+    action: getFormProject
+    method: GET
+    filters:
+        default:
+            id: null
+        require:
+            id: '[\d-]+'
+
+putProject:
+    path: projects/update/:id
+    controller: ProjectController
+    action: putProject
+    filters:
+        require:
+            id: '[\d-]+'
+
+deleteProject:
+    path: projects/delete/:id
+    controller: ProjectController
+    action: deleteProject
+    filters:
+        require:
+            id: '[\d-]+'
+
+boardProject:
+    path: projects/:id
+    controller: ProjectController
+    action: boardProject
+    filters:
+        require:
+            id: '[\d-]+'
+
+postTask:
+    path: tasks/create/:project_id
+    controller: TaskController
+    action: postTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+
+archiveTask:
+    path: tasks/archive/:project_id/:id
+    controller: TaskController
+    action: archiveTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'
+
+deleteTask:
+    path: tasks/delete/:project_id/:id
+    controller: TaskController
+    action: deleteTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'

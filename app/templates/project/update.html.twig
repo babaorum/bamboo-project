@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Bamboo Project</title>
+    </head>
+    <body>
+        <ul class="errors">
+            {% for errorTag in errors %}
+                {% for error in errorTag %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+        <form action="/projects/update/{{project.id}}" method="POST">
+            <div>
+                {{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}
+            </div>
+            <br />
+            <div>
+                {{formProject.description.label}} : {{helpers.GetField.getFieldFilter(formProject.description)|raw}}
+            </div>
+            <input type="submit" name="submit" value="Envoyer">
+        </form>
+    </body>
+</html>
