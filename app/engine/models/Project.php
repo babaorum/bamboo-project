@@ -80,7 +80,7 @@ class Project extends WalrusModel
 
         if (!is_null($project))
         {
-            $test = R::trash( $project );
+            R::trash( $project );
 
             $project_exist = $this->getProject($id);
 
