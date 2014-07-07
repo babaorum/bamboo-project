@@ -105,11 +105,15 @@ class Project extends WalrusModel
         return $errors;
     }
 
-    public function addUser($id, $user)
+    public function addUser($project_id, $user_id)
     {
         $projectModel = $this->model('project');
         $project = $projectModel->getProject($project_id);
 
         $project = R::dispense('projects');
+        $project->project_id = $id;
+
+        $user->sharedUsersList = $project;
+        R::store($user);
     }
 }

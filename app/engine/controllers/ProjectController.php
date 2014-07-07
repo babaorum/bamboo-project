@@ -93,9 +93,10 @@ class ProjectController extends WalrusController
         $projectModel = $this->model('project');
         $userModel = $this->model('user');
 
+        $project_id = $projectModel->getProject($project_id);
         $user_id = $userModel->getUserByEmail($email);
 
-        if (!is_null($user_id))
+        if (!is_null($project_id) && !is_null($user_id))
         {
             $project = $projectModel->addUser($project_id, $user_id);
         }
