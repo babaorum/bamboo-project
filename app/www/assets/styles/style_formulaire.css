@@ -1,43 +1,3 @@
-*
-{ 
-	margin:0;
-	padding:0;
-	border:0; 
-	box-sizing:border-box !important;
-	-moz-box-sizing:border-box !important; 
-}
-
-nav
-{
-	background-color:#86C540;
-	height:auto;
-	padding:20px 0;
-}
-
-#logo
-{
- 	width: 25%;
-}
-body
-{
-	background-color:#404040;
-}
-#wrapper 
-{
-	height:auto;
-	width:1080px;
-	margin:auto;
-	position:relative;
-}
-
-/* End Panel*/
-/*Formulaire*/
-	label
-	{
-		/*margin-left:15px;*/
-		position:relative;
-		float:left;
-	}
 	input, textarea{
 		position:relative;
 		float:right;
@@ -54,16 +14,6 @@ body
 		width:200px;
 		margin-top:2px;
 	}
-	fieldset
-	{
-		font-family:"Source Sans Pro";
-		display:none;
-		width:450px;
-		height:auto;
-		margin:25%;
-		background-color:#EFEFEF;
-		padding:30px;
-	}
 	textarea, #description
 	{
 		border-style:solid !important;
@@ -72,88 +22,6 @@ body
 		background-color:#ffffff;
 		width:200px;
 	}
-	.colorbox
-	{
-		height:20px;
-		width:20px;
-		background-color:black;
-		position:relative;
-		float:left;
-		margin-right:10px;
-		cursor:pointer;
-	}
-	#colorbox_red
-	{
-		margin-left:15px;
-		background-color:red;
-		border:1px solid #000000;
-	}
-	#colorbox_green
-	{
-		background-color:green;
-	}
-	#colorbox_blue
-	{
-		background-color:blue;
-	}
-	#colorbox_orange
-	{
-		background-color:orange;
-	}
-	#colorbox_yellow
-	{
-		background-color:yellow;
-	}
-	/*calendar*/
-	#date_begin
-	{
-		/*margin:15px;*/
-		margin-right:0 !important;
-	}
-	#date_end
-	{
-		/*margin:15px;*/
-		margin-right:0 !important;
-	}
-	/*calendar*/
-	#nom
-	{
-
-	}
-	#calendar
-	{
-
-	}
-	#description
-	{
-
-	}
-	#participant
-	{
-
-	}
-	#wrapper_colorbox
-	{
-		position:relative;
-		float:right;
-	}
-	#ui-datepicker-div
-	{
-		background-color:#909090;
-	}
-	#ui-datepicker-calendar
-	{
-		border-style:solid !important;
-		border-color:black !important;
-		border:1px !important;
-	}
-	.ui-datepicker .ui-widget .ui-widget-content .ui-helper-clearfix .ui-corner-all
-	{
-		border-style:solid;
-		border-color:black;
-		border:1px;
-	}
-/*Formulaire*/
 
 	#acceptbutton{
 		width:150px;
@@ -169,15 +37,3 @@ body
 		background-color:#404040;
 		color:#ffffff;
 	}
-
-
-
-
-
-#testbox{
-	position:relative;
-	cursor:pointer;
-	background-color:red;
-	width:20px;
-	height:20px;
-}
