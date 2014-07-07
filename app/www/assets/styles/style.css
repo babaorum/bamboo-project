@@ -20,6 +20,7 @@ a
 	{
 		background-color: #9BCFB4;
 		height: 50px;
+        z-index: 300;
 	}
 	nav
 	{
@@ -143,15 +144,22 @@ a
 /* Sidebar */
 	#right-bar
 	{
-		padding-top: 60px;
 	    width: 320px;
 	    position: fixed;
 	    top: 0;
 	    right: 0;
 	    height: 100%;
 	    background-color: #D1DFD1;
-	    z-index: -1;
+        border-left: 1px solid #CCCCCC;
 	}
+    #tools
+    {
+        background-color: #95B595;
+        display: inline-block;
+        line-height: 50px;
+        width: 100%;
+        text-align: center;
+    }
 /* Form */
     form
     {
