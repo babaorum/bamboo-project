@@ -87,4 +87,21 @@ class ProjectController extends WalrusController
             $this->reroute('user', 'home');
         }
     }
+
+    public function addUserToProject($project_id, $email)
+    {
+        $projectModel = $this->model('project');
+        $userModel = $this->model('user');
+
+        $user_id = $userModel->getUserByEmail($email);
+
+        if (!is_null($user_id))
+        {
+            $project = $projectModel->addUser($project_id, $user_id);
+        }
+        else
+        {
+            $this->go('/');
+        }
+    }
 }
