@@ -1,87 +1,77 @@
-<!doctype html>
-    <head>
-        <title>HomePage-Bamboo</title>
-        <meta name="description" content="Project Manager Project">
-        <meta name="keywords" content="Project Manager">
-        <meta name="author" content="Benjamin Guilbaud , Romain Grelet et Mathilde Husson">
-        <meta charset="UTF-8 bin">
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel= "stylesheet" href= "/assets/styles/style.css"/>
-        <script type="text/javascript" src="/assets/javascript/jquery-2.1.1.min"></script>
-        <script type="text/javascript" src="/assets/javascript/Walrus.js"></script>
-        <script type="text/javascript" src="/assets/javascript/home.js"></script>
-    </head>
+{% extends "base.html.twig" %}
 
-    <body>
-        <header>
-             <nav>
-                <div id="logo">
-                    <img src="/assets/images/logoBamboo3.png" height="50">
-                </div>
-                <a href="/logout/" id="logout">
-                    Deconnexion
-                </a>
-            </nav>
-        </header>
-        <div id="projects">
-            <div>
-                <form id="createProject" action="/projects/create" method="POST">
-                    <div><label>{{formProject.name.label}} : </label>{{helpers.GetField.getFieldFilter(formProject.name)|raw}}</div>
-                    <div><label>{{formProject.description.label}} : </label>{{helpers.GetField.getFieldFilter(formProject.description)|raw}}</div>
-                    <input type="submit" name="submit" value="Envoyer">
-                </form>
-            </div>
-            {% if noProject is defined %}
-                {{ noProject }}
-            {% else %}
-                {% if projects is defined %}
-                    {% for batch in projects|batch(4) %}
-                        <div>
-                            {% for project in batch %}
-                                <div class="card-project float-left">
-                                    {% if project.name is defined %}
-                                    <div class="title-project">
-                                        <a href="/projects/{{project.id}}">
-                                            {{ project.name }}
+<<<<<<< HEAD
+{% block head %}
+    {{ parent() }}
+
+    <title>HomePage-Bamboo</title>
+    <link rel= "stylesheet" href= "/assets/styles/home.css"/>
+    <link rel= "stylesheet" href= "/assets/styles/rightbar.css"/>
+    <link rel= "stylesheet" href= "/assets/styles/projects.css"/>
+{% endblock %}
+
+{% block content %}
+    {% if noProject is defined %}
+        {{ noProject }}
+    {% else %}
+        {% if projects is defined %}
+            {% for batch in projects|batch(4) %}
+                <div>
+                    {% for project in batch %}
+                        <div class="card-project">
+                            {% if project.name is defined %}
+                                <div class="title-project">
+                                    <a href="/projects/{{project.id}}">
+                                        {{ project.name }}
+                                    </a>
+                                    <div class="card-action">
+                                        <a href="/projects/edit/{{project.id}}">
+                                            <img src="assets/images/edit.png" height="25">
                                         </a>
-                                        <div class="card-action">
-                                            <a href="/projects/edit/{{project.id}}">
-                                                <img src="assets/images/edit.png" height="25">
-                                            </a>
-                                            &nbsp;
-                                            <a href="/projects/delete/{{project.id}}">
-                                                <img src="assets/images/close.png" height="25">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                    {% if project.description is defined %}
-                                    <div class="description information">
-                                        {{ project.description }}
-                                    </div>
-                                    {% endif %}
-                                    {% if project.date_update is defined %}
-                                    <div class="last-use information">
-                                        Derniere mise a jour le 
-                                        {{ project.date_update }}
-                                    </div>
-                                    {% endif %}
-                                    <div class="stats">
-                                        Statistiques
-                                        <div class="arrow-right"></div>
+                                        &nbsp;
+                                        <a href="/projects/delete/{{project.id}}">
+                                            <img src="assets/images/close.png" height="25">
+                                        </a>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                        <div class="statistics">
+                            {% endif %}
+                            {% if project.description is defined %}
+                                <div class="information description">
+                                    {{ project.description }}
+                                </div>
+                            {% endif %}
+                            {% if project.date_update is defined %}
+                                <div class="last-use information">
+                                    Derniere mise a jour le 
+                                    {{ project.date_update }}
+                                </div>
+                            {% endif %}
+                            <div class="stats">
+                                Statistiques
+                                <div class="arrow-right"></div>
+                            </div>
                         </div>
                     {% endfor %}
-                {% endif %}
-            {% endif %}
-        </div>
-            <div id="right-bar"></div>
-        <footer>
+                </div>
+                <div class="statistics"></div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
 
-        </footer>
-    </body>
-</html>
+{% block rightbar %}
+    <div id="right-bar">
+        <div id="tools">Hula hup, bambootruc</div>
+        <form id="createProject" action="/projects/create" method="POST">
+            <div>
+                <label>{{formProject.name.label}} : </label>
+                {{helpers.GetField.getFieldFilter(formProject.name)|raw}}
+            </div>
+            <div>
+                <label>{{formProject.description.label}} : </label>
+                {{helpers.GetField.getFieldFilter(formProject.description)|raw}}
+            </div>
+            <input type="submit" name="submit" value="Envoyer">
+        </form>
+    </div>
+{% endblock %}
