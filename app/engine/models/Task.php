@@ -8,10 +8,20 @@ use Walrus\core\WalrusForm;
 
 class Task extends WalrusModel
 {
-	public function getTasks($project_id)
-	{
-		return R::find('tasks', 'projects_id = :project_id', ['project_id' => $project_id]);
-	}
+    public function getTasks($project_id)
+    {
+        return R::find('tasks', 'projects_id = :project_id', ['project_id' => $project_id]);
+    }
+    
+    public function getTask($id)
+    {
+        $task = R::load('tasks', $id);
+        if ($task->id !== 0)
+        {
+            return $task;
+        }
+        return null;
+    }
 
     public function getForm()
     {
@@ -35,6 +45,7 @@ class Task extends WalrusModel
             {
                 $task = R::dispense('tasks');
                 $task->import($_POST, 'name,description,color,deadline');
+                $task->archive = false;
                 $project->ownTasksList[] = $task;
                 R::store($project);
                 return $task;
@@ -47,6 +58,38 @@ class Task extends WalrusModel
             return $errors;
         }
         return false;
+    }
+
+    public function archive($id)
+    {
+        $task = $this->getTask($id);
+        
+        if(!is_null($task))
+        {
+	        $task->archive = true;
+	        R::store($task);
+	        return $task;
+        }
+        return false;
+    }
+
+    public function delete($id)
+    {
+    	$task = $this->getTask($id);
+
+    	if(!is_null($task))
+    	{
+    		R::trash($task);
+
+            $task_exist = $this->getTask($id);
+
+            if (is_null($task_exist))
+            {
+                return $id;
+            }
+    	}
+
+    	return false;
     }
 
     public function check($project_id)
