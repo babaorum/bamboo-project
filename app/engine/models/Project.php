@@ -104,4 +104,9 @@ class Project extends WalrusModel
 
         return $errors;
     }
+
+    public function addUser($value='')
+    {
+        # code...
+    }
 }
