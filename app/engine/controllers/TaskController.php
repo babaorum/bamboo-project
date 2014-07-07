@@ -11,7 +11,7 @@ class TaskController extends WalrusController
     {
         $taskModel = $this->model('task');
         $response = $taskModel->create($project_id);
-        
+
         $errors = array();
         if(!is_object($response) && $response !== false)
         {
