@@ -131,7 +131,7 @@ class Task extends WalrusModel
         {
             $errors['status'][] = 'Le statut donné n\'est pas valide';
         }
-        if(isset($_POST['color']) && !in_array($_POST['color'], array('blue','green','yellow','orange','red')))
+        if(isset($_POST['color']) && !in_array($_POST['color'], array('','blue','green','yellow','orange','red')))
         {
             $errors['color'][] = 'La couleur donnée n\'est pas valide';
         }
