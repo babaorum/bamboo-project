@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Bamboo Project</title>
+</head>
+<body>
+    <a href="/projects/{{project_id}}/"><button>Retour Projet</button></a>
+    <br><br>
+    <ul class="errors">
+        {% for errorTag in errors %}
+            {% for error in errorTag %}
+                <li>{{error}}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    <br>
+    <form action="/tasks/update/{{project_id}}/{{task.id}}/" method="POST">
+        <div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
+        <div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
+        <div>{{formTask.status.label}} : {{helpers.GetField.getFieldFilter(formTask.status)|raw}}</div>
+        <div>{{formTask.color.label}} : {{helpers.GetField.getFieldFilter(formTask.color)|raw}}</div>
+        <div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
+        <input type="submit" name="submit" value="Modifier">
+    </form>
+</body>
+</html>
