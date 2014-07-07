@@ -7,6 +7,16 @@ use Walrus\core\WalrusHelpers;
 
 class TaskController extends WalrusController
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (empty($_SESSION['user']['id']))
+        {
+            $this->reroute('user', 'login');
+        }
+    }
+    
     public function postTask($project_id)
     {
         $taskModel = $this->model('task');
