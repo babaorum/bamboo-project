@@ -22,8 +22,7 @@ class GetField extends \Twig_Extension
 
         if ($field['type'] == 'select')
         {
-            $empty_option = (isset($field['not_empty']) && $field['not_empty'] == false) ? '<option value=""></option>' : '';
-            $options = '';
+            $options = (isset($field['not_empty']) && $field['not_empty'] == false) ? '<option value=""></option>' : '';
             foreach ($field['options'] as $key => $option)
             {
                 $val = 'value="'.$key.'"';

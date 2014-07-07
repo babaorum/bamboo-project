@@ -32,6 +32,7 @@ form_task:
             type: select
             not_empty: false
             class: color
+            required: true
             options:
                 blue:
                     label: Bleu

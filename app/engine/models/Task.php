@@ -127,6 +127,18 @@ class Task extends WalrusModel
         {
             $errors['name'][] = 'Le nom d\'une t&acirc;che doit &ecirc;tre unique'; 
         }
+        if (isset($_POST['status']) && !in_array($_POST['status'], array('do','doing','done')))
+        {
+            $errors['status'][] = 'Le statut donné n\'est pas valide';
+        }
+        if(isset($_POST['color']) && !in_array($_POST['color'], array('blue','green','yellow','orange','red')))
+        {
+            $errors['color'][] = 'La couleur donnée n\'est pas valide';
+        }
+        if (isset($_POST['deadline']) && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$_POST['deadline']) === false)
+        {
+            $errors['deadline'][] = 'La deadline n\'est pas au bon format';
+        }
 
         return $errors;
     }
