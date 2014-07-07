@@ -58,3 +58,21 @@ postTask:
     filters:
         require:
             project_id: '[\d-]+'
+
+archiveTask:
+    path: tasks/archive/:project_id/:id
+    controller: TaskController
+    action: archiveTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'
+
+deleteTask:
+    path: tasks/delete/:project_id/:id
+    controller: TaskController
+    action: deleteTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'
