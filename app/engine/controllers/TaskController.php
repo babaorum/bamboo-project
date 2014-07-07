@@ -3,6 +3,7 @@
 namespace app\engine\controllers;
 
 use Walrus\core\WalrusController;
+use Walrus\core\WalrusHelpers;
 
 class TaskController extends WalrusController
 {
@@ -17,6 +18,30 @@ class TaskController extends WalrusController
             $errors = $response;
         }
         $this->reroute('project', 'boardProject', array($project_id, $errors));
+    }
+
+    public function editTask($project_id, $id, $errors = array())
+    {
+    	$taskModel = $this->model('task');
+    	$formFields = $taskModel->getForm($id)->getFields();
+    	$task = $taskModel->getTask($id);
+    	if (!is_null($task))
+    	{
+    		$formUpdateHelper = WalrusHelpers::getHelper('FormUpdate', true);
+            $formFields = $formUpdateHelper->putDataIntoForm($formFields, $task);
+
+
+            $this->register('project_id', $project_id);
+            $this->register('errors', $errors);
+            $this->register('task', $task->export());
+            $this->register('formTask', $formFields);
+            $this->setView('update');
+    	}
+    }
+
+    public function putTask()
+    {
+
     }
 
     public function archiveTask($project_id, $id)

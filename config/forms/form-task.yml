@@ -16,6 +16,17 @@ form_task:
             label: Description
             class: description
             required: true
+        status:
+            label: Statut
+            type: select
+            class: status
+            options:
+                do: 
+                    label: Do
+                doing:
+                    label: Doing
+                done:
+                    label: Done
         color:
             label: Couleur
             type: select

@@ -22,12 +22,13 @@ class GetField extends \Twig_Extension
 
         if ($field['type'] == 'select')
         {
-            $options = (isset($field['not_empty']) && $field['not_empty'] == false) ? '<option value=""></option>' : '';
+            $empty_option = (isset($field['not_empty']) && $field['not_empty'] == false) ? '<option value=""></option>' : '';
+            $options = '';
             foreach ($field['options'] as $key => $option)
             {
                 $val = 'value="'.$key.'"';
                 $label = (!empty($option['label'])) ? $option['label'] : 'label...';
-                $selected = (!empty($field['value']) && $field['value'] == $option['value'])? 'selected':'';
+                $selected = (isset($field['value']) && $field['value'] == $key) ? 'selected':'';
                 $option = '<option '.$selected.' '.$val.'>'.$label.'</option>';
                 $options .= $option;
             }

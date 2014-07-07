@@ -45,6 +45,7 @@ class Task extends WalrusModel
             {
                 $task = R::dispense('tasks');
                 $task->import($_POST, 'name,description,color,deadline');
+                $task->status = 'do';
                 $task->archive = false;
                 $project->ownTasksList[] = $task;
                 R::store($project);
