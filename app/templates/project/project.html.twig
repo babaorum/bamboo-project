@@ -22,33 +22,49 @@
              	</a>
             </nav>
         </header>
-        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
-        <h2>{{project.description}}</h2>
-        <div>
-            <ul class="errors">
-                {% for errorTag in errors %}
-                    {% for error in errorTag %}
-                        <li>{{error}}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-            <form action="/tasks/create/{{project.id}}" method="POST">
-                <div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
-                <div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
-                <div>{{formTask.color.label}} : {{helpers.GetField.getFieldFilter(formTask.color)|raw}}</div>
-                <div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
-                <input type="submit" name="submit" value="Cr&eacute;er">
-            </form>
-        </div>
-        <div>
-            {% for task in tasks %}
-                <div>{{task.id}}</div>
-                <div>{{task.name}}</div>
-                <div>{{task.description}}</div>
-                <div>{{task.color}}</div>
-                <div>{{task.deadline}}</div>
-                <br>
-            {% endfor %}
+        <div id="cards">
+	        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+	        <h2>{{project.description}}</h2>
+	        <div>
+	            <ul class="errors">
+	                {% for errorTag in errors %}
+	                    {% for error in errorTag %}
+	                        <li>{{error}}</li>
+	                    {% endfor %}
+	                {% endfor %}
+	            </ul>
+	        </div>
+	        <div>
+	            {% for task in tasks %}
+	                <div>{{task.id}}</div>
+	                <div>{{task.name}}</div>
+	                <div>{{task.description}}</div>
+	                <div>{{task.color}}</div>
+	                <div>{{task.deadline}}</div>
+	                <br>
+	            {% endfor %}
+	        </div> 
+            <div id="right-bar">
+	            <form action="/tasks/create/{{project.id}}" method="POST">
+	                <div>
+	                	<label>{{formTask.name.label}} : </label>
+	                	{{helpers.GetField.getFieldFilter(formTask.name)|raw}}
+	                </div>
+	                <div>
+	                	<label>{{formTask.description.label}} : </label>
+	                	{{helpers.GetField.getFieldFilter(formTask.description)|raw}}
+	                </div>
+	                <div>
+	                	<label>{{formTask.color.label}} : </label>
+	                	{{helpers.GetField.getFieldFilter(formTask.color)|raw}}
+	                </div>
+	                <div>
+	                	<label>{{formTask.deadline.label}} : </label>
+	                	{{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}
+	                </div>
+	                <input type="submit" name="submit" value="Cr&eacute;er">
+	            </form>
+	        </div>
         </div>
     </body>
 </html>

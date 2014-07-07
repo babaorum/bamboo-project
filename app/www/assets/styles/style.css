@@ -18,9 +18,9 @@ a
 /* Navbar */
 	header
 	{
-		z-index: 1;
-		background-color: #9BCFB4; /*#84C5A3*/ /*#86C584*/
+		background-color: #9BCFB4;
 		height: 50px;
+		z-index: 10000000;
 	}
 	nav
 	{
@@ -136,11 +136,16 @@ a
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
 	}
-
+/* Card Task */
+	#cards
+	{
+		margin: 10px 50px;
+		width: 75%;
+	}
 /* Sidebar */
 	#right-bar
 	{
-		z-index: -1;
+		padding-top: 60px;
 	    width: 320px;
 	    position: fixed;
 	    top: 0;
