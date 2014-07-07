@@ -1,0 +1,19 @@
+/* Sidebar */
+	#right-bar
+	{
+	    width: 320px;
+	    position: fixed;
+	    top: 0;
+	    right: 0;
+	    height: 100%;
+	    background-color: #D1DFD1;
+        border-left: 1px solid #CCCCCC;
+	}
+    #tools
+    {
+        background-color: #95B595;
+        display: inline-block;
+        line-height: 50px;
+        width: 100%;
+        text-align: center;
+    }

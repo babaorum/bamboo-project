@@ -1,0 +1,35 @@
+<!doctype html>
+	<head>
+		{% block head %}
+		<meta name="description" content="Project Manager Project">
+		<meta name="keywords" content="Project Manager">
+		<meta name="author" content="Benjamin Guilbaud , Romain Grelet et Mathilde Husson">
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel= "stylesheet" href= "/assets/styles/base.css"/>
+		<script type="text/javascript" src="../assets/javascript/jquery-2.1.1.min"></script>
+		<script type="text/javascript" src="../assets/javascript/Walrus.js"></script>
+        <script type="text/javascript" src="../assets/javascript/home.js"></script>
+        {% endblock %}
+	</head>
+    <body>
+    	<header>
+             <nav>
+             	<a href="/" id="logo">
+                	<img src="/assets/images/logoBamboo3.png" height="50">
+             	</a>
+				{% block navbar %}
+				{% endblock %}
+            </nav>
+    	</header>
+    	<div id="content">
+	    	{% block content %}
+	    	{% endblock %}
+    	</div>
+    	<div>
+	    	{% block rightbar %}
+			{% endblock %}
+		</div>
+        <footer>
+        </footer>
+    </body>
+</html>

@@ -1,90 +1,90 @@
-<!doctype html>
-	<head>
-		<title>{{project.name}}-Bamboo</title>
-		<meta name="description" content="Project Manager Project">
-		<meta name="keywords" content="Project Manager">
-		<meta name="author" content="Benjamin Guilbaud , Romain Grelet et Mathilde Husson">
-		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-		<link rel= "stylesheet" href= "../assets/styles/style.css"/>
-		<script type="text/javascript" src="../assets/javascript/jquery-2.1.1.min"></script>
-		<script type="text/javascript" src="../assets/javascript/Walrus.js"></script>
-        <script type="text/javascript" src="../assets/javascript/home.js"></script>
-	</head>
+{% extends "base.html.twig" %}
 
-    <body>
-        <header>
-             <nav>
-             	<a href="/" id="logo">
-                	<img src="../assets/images/logoBamboo3.png" height="50">
-             	</a>
-             	<a href="#" id="logout">
-             		Deconnexion
-             	</a>
-            </nav>
-        </header>
-        <div id="cards">
-	        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
-	        <h2>{{project.description}}</h2>
-	        <div>
-	            <ul class="errors">
-	                {% for errorTag in errors %}
-	                    {% for error in errorTag %}
-	                        <li>{{error}}</li>
-	                    {% endfor %}
-	                {% endfor %}
-	            </ul>
-	        </div>
-	        <div>
-            <h3>T&acirc;ches</h3>
-	            {% for task in tasks %}
-	                <div>{{task.id}}</div>
-	                <div>{{task.name}}</div>
-	                <div>{{task.description}}</div>
-	                <div>{{task.color}}</div>
-	                <div>{{task.deadline}}</div>
-	                <br>
-                    <a href="/tasks/archive/{{project.id}}/{{task.id}}"><button>Archiver</button></a>
-                    <br>
-                    <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
-	            {% endfor %}
-	        </div>
-            <div>
-                <h3>T&acirc;ches Archiv&eacute;es</h3>
-                {% for task in tasks %}
-                    {% if task.archive == 1 %}
-                        <div>{{task.id}}</div>
-                        <div>{{task.name}}</div>
-                        <div>{{task.description}}</div>
-                        <div>{{task.color}}</div>
-                        <div>{{task.deadline}}</div>
-                        <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
-                        <br>
-                        <br>
-                    {% endif %}
+{% block head %}
+    {{ parent() }}
+
+    <title>{{project.name}}-Bamboo</title>
+    <link rel= "stylesheet" href= "/assets/styles/home.css"/>
+    <link rel= "stylesheet" href= "/assets/styles/rightbar.css"/>
+    <link rel= "stylesheet" href= "/assets/styles/tasks.css"/>
+{% endblock %}
+
+
+{% block content %}
+    <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+    <h2>{{project.description}}</h2>
+    <div>
+        <ul class="errors">
+            {% for errorTag in errors %}
+                {% for error in errorTag %}
+                    <li>{{error}}</li>
                 {% endfor %}
+            {% endfor %}
+        </ul>
+        <h3>T&acirc;ches</h3>
+    </div>
+    {% for task in tasks %}
+        {% if task.archive == 0 %}
+           <div class="card-task">
+                <div class="title-task {% if task.color is defined %} {{ task.color }} {% endif %}">
+                    {{task.name}}
+                    <div class="card-action">
+                        <a href="/tasks/archive/{{project.id}}/{{task.id}}/">
+                            <img src="/assets/images/check.png" height="25">
+                        </a>
+                        &nbsp;
+                        <a href="/tasks/edit/{{project.id}}/{{task.id}}/">
+                            <img src="/assets/images/edit.png" height="25">
+                        </a>
+                        &nbsp;
+                        <a href="/tasks/delete/{{project.id}}/{{task.id}}/">
+                            <img src="/assets/images/close.png" height="25">
+                        </a>
+                    </div>
+                </div>
+                <div class="information description">{{task.description}}</div>
+                <div class="information">Fin le {{task.deadline}}</div>
+           </div>
+        {% endif %}
+    {% endfor %}
+    <div>
+        <h3>T&acirc;ches Archiv&eacute;es</h3>
+        {% for task in tasks %}
+            {% if task.archive == 1 %}
+                <div>{{task.id}}</div>
+                <div>{{task.name}}</div>
+                <div>{{task.description}}</div>
+                <div>{{task.color}}</div>
+                <div>{{task.deadline}}</div>
+                <a href="/tasks/delete/{{project.id}}/{{task.id}}/"><button>Supprimer</button></a>
+                <br>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block rightbar %}
+    <div id="right-bar">
+        <div id="tools">Hula hup, bambootruc</div>
+        <form action="/tasks/create/{{project.id}}/" method="POST">
+            <div>
+                <label>{{formTask.name.label}} : </label>
+                {{helpers.GetField.getFieldFilter(formTask.name)|raw}}
             </div>
-            <div id="right-bar">
-                <div id="tools">Hula hup, bambootruc</div>
-	            <form action="/tasks/create/{{project.id}}" method="POST">
-	                <div>
-	                	<label>{{formTask.name.label}} : </label>
-	                	{{helpers.GetField.getFieldFilter(formTask.name)|raw}}
-	                </div>
-	                <div>
-	                	<label>{{formTask.description.label}} : </label>
-	                	{{helpers.GetField.getFieldFilter(formTask.description)|raw}}
-	                </div>
-	                <div>
-	                	<label>{{formTask.color.label}} : </label>
-	                	{{helpers.GetField.getFieldFilter(formTask.color)|raw}}
-	                </div>
-	                <div>
-	                	<label>{{formTask.deadline.label}} : </label>
-	                	{{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}
-	                </div>
-	                <input type="submit" name="submit" value="Cr&eacute;er">
-	            </form>
-	        </div>
-        </div>
-    </body>
-</html>
+            <div>
+                <label>{{formTask.description.label}} : </label>
+                {{helpers.GetField.getFieldFilter(formTask.description)|raw}}
+            </div>
+            <div>
+                <label>{{formTask.color.label}} : </label>
+                {{helpers.GetField.getFieldFilter(formTask.color)|raw}}
+            </div>
+            <div>
+                <label>{{formTask.deadline.label}} : </label>
+                {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}
+            </div>
+            <input type="submit" name="submit" value="Cr&eacute;er">
+        </form>
+    </div>
+{% endblock %}
