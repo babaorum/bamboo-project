@@ -66,20 +66,20 @@ class Task extends WalrusModel
         
         if(!is_null($task))
         {
-	        $task->archive = true;
-	        R::store($task);
-	        return $task;
+            $task->archive = true;
+            R::store($task);
+            return $task;
         }
         return false;
     }
 
     public function delete($id)
     {
-    	$task = $this->getTask($id);
+        $task = $this->getTask($id);
 
-    	if(!is_null($task))
-    	{
-    		R::trash($task);
+        if(!is_null($task))
+        {
+            R::trash($task);
 
             $task_exist = $this->getTask($id);
 
@@ -87,9 +87,9 @@ class Task extends WalrusModel
             {
                 return $id;
             }
-    	}
+        }
 
-    	return false;
+        return false;
     }
 
     public function check($project_id)

@@ -25,34 +25,34 @@
         <div>
             <h3>T&acirc;ches</h3>
             {% for task in tasks %}
-            	{% if task.archive == 0 %}
-	                <div>{{task.id}}</div>
-	                <div>{{task.name}}</div>
-	                <div>{{task.description}}</div>
-	                <div>{{task.color}}</div>
-	                <div>{{task.deadline}}</div>
-	                <a href="/tasks/archive/{{project.id}}/{{task.id}}"><button>Archiver</button></a>
-	                <br>
-	                <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
-	                <br>
-	                <br>
+                {% if task.archive == 0 %}
+                    <div>{{task.id}}</div>
+                    <div>{{task.name}}</div>
+                    <div>{{task.description}}</div>
+                    <div>{{task.color}}</div>
+                    <div>{{task.deadline}}</div>
+                    <a href="/tasks/archive/{{project.id}}/{{task.id}}"><button>Archiver</button></a>
+                    <br>
+                    <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
+                    <br>
+                    <br>
                 {% endif %}
             {% endfor %}
         </div>
         <div>
-        	<h3>T&acirc;ches Archiv&eacute;es</h3>
-        	{% for task in tasks %}
-        		{% if task.archive == 1 %}
-	                <div>{{task.id}}</div>
-	                <div>{{task.name}}</div>
-	                <div>{{task.description}}</div>
-	                <div>{{task.color}}</div>
-	                <div>{{task.deadline}}</div>
-	                <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
-	                <br>
-	                <br>
+            <h3>T&acirc;ches Archiv&eacute;es</h3>
+            {% for task in tasks %}
+                {% if task.archive == 1 %}
+                    <div>{{task.id}}</div>
+                    <div>{{task.name}}</div>
+                    <div>{{task.description}}</div>
+                    <div>{{task.color}}</div>
+                    <div>{{task.deadline}}</div>
+                    <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
+                    <br>
+                    <br>
                 {% endif %}
-        	{% endfor %}
+            {% endfor %}
         </div>
     </body>
 </html>

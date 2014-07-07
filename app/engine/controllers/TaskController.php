@@ -29,7 +29,7 @@ class TaskController extends WalrusController
 
     public function deleteTask($project_id, $id)
     {
-    	$taskModel = $this->model('task');
+        $taskModel = $this->model('task');
         $response = $taskModel->delete($id);
 
         $this->reroute('project', 'boardProject', array($project_id));
