@@ -20,7 +20,7 @@ class ProjectController extends WalrusController
     {
         $projectModel = $this->model('project');
         
-        $formFields = $projectModel->getForm($id)->getFields();
+        $formFields = $projectModel->getForm()->getFields();
 
         if ($id !== null)
         {
