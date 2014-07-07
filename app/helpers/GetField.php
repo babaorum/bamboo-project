@@ -27,7 +27,7 @@ class GetField extends \Twig_Extension
             {
                 $val = 'value="'.$key.'"';
                 $label = (!empty($option['label'])) ? $option['label'] : 'label...';
-                $selected = (!empty($field['value']) && $field['value'] == $option['value'])? 'selected':'';
+                $selected = (isset($field['value']) && $field['value'] == $key) ? 'selected':'';
                 $option = '<option '.$selected.' '.$val.'>'.$label.'</option>';
                 $options .= $option;
             }

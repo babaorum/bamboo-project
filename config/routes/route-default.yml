@@ -76,3 +76,21 @@ deleteTask:
         require:
             project_id: '[\d-]+'
             id: '[\d-]+'
+
+editTask:
+    path: tasks/edit/:project_id/:id
+    controller: TaskController
+    action: editTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'
+
+putTask:
+    path: tasks/update/:project_id/:id
+    controller: TaskController
+    action: putTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'
