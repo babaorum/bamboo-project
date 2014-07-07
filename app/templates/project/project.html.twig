@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Bamboo Project</title>
+    </head>
+    <body>
+        <a href="/"><button>Accueil</button></a>
+        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+        <h2>{{project.description}}</h2>
+        <div>
+            <ul class="errors">
+                {% for errorTag in errors %}
+                    {% for error in errorTag %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            <form action="/tasks/create/{{project.id}}" method="POST">
+                <div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
+                <div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
+                <div>{{formTask.color.label}} : {{helpers.GetField.getFieldFilter(formTask.color)|raw}}</div>
+                <div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
+                <input type="submit" name="submit" value="Cr&eacute;er">
+            </form>
+        </div>
+        <div>
+            <h3>T&acirc;ches</h3>
+            {% for task in tasks %}
+                {% if task.archive == 0 %}
+                    <div>{{task.id}}</div>
+                    <div>{{task.name}}</div>
+                    <div>{{task.description}}</div>
+                    <div>{{task.color}}</div>
+                    <div>{{task.deadline}}</div>
+                    <a href="/tasks/archive/{{project.id}}/{{task.id}}"><button>Archiver</button></a>
+                    <br>
+                    <a href="/tasks/edit/{{project.id}}/{{task.id}}"><button>Editer</button></a>
+                    <br>
+                    <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
+                    <br>
+                    <br>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div>
+            <h3>T&acirc;ches Archiv&eacute;es</h3>
+            {% for task in tasks %}
+                {% if task.archive == 1 %}
+                    <div>{{task.id}}</div>
+                    <div>{{task.name}}</div>
+                    <div>{{task.description}}</div>
+                    <div>{{task.color}}</div>
+                    <div>{{task.deadline}}</div>
+                    <br>
+                    <a href="/tasks/edit/{{project.id}}/{{task.id}}"><button>Editer</button></a>
+                    <br>
+                    <a href="/tasks/delete/{{project.id}}/{{task.id}}"><button>Supprimer</button></a>
+                    <br>
+                    <br>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </body>
+</html>

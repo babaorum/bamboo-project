@@ -6,26 +6,16 @@ use Walrus\core\WalrusController;
 
 class UserController extends WalrusController
 {
-    protected $userModel;
-    protected $projectModel;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->userModel = $this->model('user');
-        $this->projectModel = $this->model('project');
-    }
-
     public function home()
     {
+        $projectModel = $this->model('project');
         if (empty($_SESSION['user']['id']))
         {
             $this->reroute('user', 'login');
         }
-        
-        $formProject = $this->projectModel->newProject();
-        $projects = $this->projectModel->getProjects();
-        
+
+        $formProject = $projectModel->getForm();
+        $projects = $projectModel->getProjects();
         if(empty($projects))
         {
             $this->register('noProject', 'Il n\'y a pas encore de projet');
@@ -41,6 +31,7 @@ class UserController extends WalrusController
 
     public function login()
     {
+        $userModel = $this->model('user');
         $include_path = get_include_path();
         set_include_path($include_path. PATH_SEPARATOR ."../../vendor/Google/src/");
         include_once('Google/Client.php');
@@ -65,14 +56,32 @@ class UserController extends WalrusController
 
                 $plus = new \Google_Service_Plus($client);
                 $user = $plus->people->get('me');
-                $user = $this->userModel->create($user);
+                $user = $userModel->create($user);
                 
-                $_SESSION['user'] = $user->export();
-                $this->go('http://bamboo-project.dev:8080');
+                header('Location: http://bamboo-project.dev:8080/log/'.$user->id);
+                die();
             }
         }
 
         $this->register('authUrl', $authUrl);
         $this->setView('login');
+    }
+
+    public function loged($id)
+    {
+        $userModel = $this->model('user');
+        $user = $userModel->getUser($id);
+        if(!is_null($user))
+        {
+            $_SESSION['user'] = $user->export();
+        }
+        
+        $this->go('/');
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        $this->reroute('user', 'login');
     }
 }

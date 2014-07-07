@@ -17,7 +17,12 @@ class User extends WalrusModel
         {
             $user = R::findOne('users', "$column_name = ?", [$data]);
         }
-        return $user;
+        
+        if ($user->id !== 0)
+        {
+            return $user;
+        }
+        return null;
     }
 
     public function create($user)
