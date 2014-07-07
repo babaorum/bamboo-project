@@ -1,0 +1,70 @@
+	.card-task
+    {
+        width: 300px;
+        background-color: #ECE7CE;
+        border: 1px solid;
+        border-color: #AAAAAA #DDDDDD #E3DFD2;
+        margin: 20px 20px 0px 20px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    .title-task
+    {
+        background-color: #D4CFB9;
+        text-align: center;
+        padding: 10px;
+        border-bottom: solid #CCD4B9;
+    }
+    .card-action
+    {
+        float: right;
+    }
+	.information
+    {
+        margin: 15px;
+        padding-bottom: 15px;
+        border-bottom: solid #CCD4B9 2px;
+        min-height: 20px;
+    }
+    .description
+    {
+        height: 160px;
+        overflow-y: scroll;
+    }
+    .green
+    {
+    	background-color: #99CC99;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .blue
+    {
+    	background-color: #9999FF;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .red
+    {
+    	background-color: #FF9999;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .yellow
+    {
+    	background-color: #FFFF99;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .orange
+    {
+    	background-color: #FFDB99;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    form,#update
+    {
+        
+        margin:auto;
+        margin-top:10%;
+        padding:15px;
+    }

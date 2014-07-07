@@ -1,0 +1,79 @@
+/* Card project */
+    .card-project
+    {
+        width: 300px;
+        background-color: #ECE7CE;
+        border: 1px solid;
+        border-color: #AAAAAA #DDDDDD #E3DFD2;
+        margin: 20px 20px 0px 20px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        display: inline-block;
+    }
+    .title-project
+    {
+        background-color: #D4CFB9;
+        text-align: center;
+        padding: 10px;
+        border-bottom: solid #CCD4B9;
+    }
+    .card-action
+    {
+        float: right;
+    }
+    .information
+    {
+        margin: 15px;
+        padding-bottom: 15px;
+        border-bottom: solid #CCD4B9 2px;
+    }
+    .description
+    {
+        height: 160px;
+        overflow-y: scroll;
+    }
+    .stats
+    {
+        padding: 10px;
+        background-color: #D4CDB9;
+        transition: background-color 0.3s;
+    }
+    .stats:hover
+    {
+        background-color: #CAC2A9;
+    }
+    .arrow-right 
+    {
+        width: 0; 
+        height: 0; 
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 7px solid #A3956A;
+        margin: 5px;
+        float: right;
+    }
+    .arrow-down 
+    {
+        width: 0; 
+        height: 0; 
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid #A3956A;
+
+        margin: 7px;
+        float: right;
+    }
+
+/* Statistics */
+	.statistics
+	{
+		clear: both;
+		width: 1337px;
+		height: 200px;
+		margin: 0px 20px 20px 20px;
+		background-color: #E3DFD2;
+		border: 1px solid;
+		border-color: #E3DFD2 #DDDDDD #AAAAAA;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}

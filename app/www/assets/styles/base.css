@@ -1,0 +1,58 @@
+/* To fix blank frame */
+*
+{
+    margin: 0px;
+}
+
+body
+{
+    background-color: #E6F3E6;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+/* Navbar */
+	header
+	{
+		background-color: #9BCFB4;
+		height: 50px;
+	    z-index: 300;
+	}
+	nav
+	{
+	 	padding-left: 10px;
+	}
+	#logo
+	{
+		float: left;
+	}
+
+#content 
+{
+    margin: 10px 50px;
+    width: 78%;
+}
+
+form
+{
+    width: 300px;
+    border: 1px solid;
+    border-color: #EEEEEE #DDDDDD #CCCCCC;
+    background-color: #EFEFEF;
+    padding: 10px;
+}
+label
+{
+    display: inline-block;
+    width: 100px;
+    margin: 10px;
+}
+input
+{
+    display: inline-block;
+    width: 170px;
+}
