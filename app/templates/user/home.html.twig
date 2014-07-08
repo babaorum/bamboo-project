@@ -41,7 +41,7 @@
                             {% endif %}
                             {% if project.date_update is defined %}
                                 <div class="last-use information">
-                                    Derniere mise a jour le 
+                                    Derni&egrave;re mise &agrave; jour le 
                                     {{ project.date_update }}
                                 </div>
                             {% endif %}
@@ -60,7 +60,7 @@
 
 {% block rightbar %}
     <div id="right-bar">
-        <div id="tools">Hula hup, bambootruc</div>
+        <div id="tools">Boite &agrave; outils</div>
         <form id="createProject" action="/projects/create" method="POST">
             <div>
                 <label>{{formProject.name.label}} : </label>

@@ -153,7 +153,8 @@
 
 {% block rightbar %}
     <div id="right-bar">
-        <div id="tools">Hula hup, bambootruc</div>
+        <div id="tools">Boite a outils</div>
+        <div class="form-title">Creation de tache</div>
         <form action="/tasks/create/{{project.id}}/" method="POST">
             <div>
                 <label>{{formTask.name.label}} : </label>
@@ -174,6 +175,7 @@
             <input type="submit" name="submit" value="Cr&eacute;er">
         </form>
 
+        <div class="form-title">Ajout d'un utilisateur au projet</div>
         <form action="/projects/{{project.id}}/users" method="POST">
             <input type="email" name="mail" placeholder="Email">
             <input type="submit" name="submit" value="Ajouter">

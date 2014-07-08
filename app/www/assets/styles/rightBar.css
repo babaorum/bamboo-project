@@ -17,3 +17,11 @@
         width: 100%;
         text-align: center;
     }
+    .form-title
+    {
+        background-color: #B3CAB3;
+        display: inline-block;
+        line-height: 50px;
+        width: 100%;
+        text-align: center;
+    }
