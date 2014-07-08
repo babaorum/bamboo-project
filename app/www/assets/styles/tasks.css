@@ -1,4 +1,13 @@
-	.card-task
+/* Project */
+    #project
+    {
+        background-color: #D4CFB9;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+    }
+/* Cards */
+    .card-task
     {
         width: 300px;
         background-color: #ECE7CE;
@@ -67,8 +76,35 @@
     .column
     {
         margin: auto;
-        width: 33%;
         float: left;
+        width: 33%;
         height: 500px;
         overflow-y: scroll;
+        background-color: #EFF1E9; 
+        border: 1px solid;
+        border-color: #AAAAAA #DDDDDD #E3DFD2;
+    }
+    .task
+    {
+        background-color: #CCD4B9;
+        border-bottom: solid #CCD4B9;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    #cards
+    {
+        margin-bottom: 50px;
+    }
+    #archives
+    {
+        clear: both;
+    }
+    .archive
+    {
+        background-color: #CCD4B9;
+        border-bottom: solid #CCD4B9;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
     }

@@ -11,9 +11,10 @@
 
 
 {% block content %}
-    
-        <h2>Vous &ecirc;tes sur la board du projet {{project.name}}</h2>
-        <h2>{{project.description}}</h2>
+        <div id="project">
+            <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+            <p>{{project.description}}</p>
+        </div>
         <div>
             <ul class="errors">
                 {% for errorTag in errors %}
@@ -25,8 +26,10 @@
         </div>
         <div id="cards">
             <div id="active">
-                <h3>T&acirc;ches</h3>
                 <div class="column do">
+                    <div class="task">   
+                        To Do
+                    </div>
                     {% for task in tasks %}
                         {% if task.archive == 0 %}
                             {% if task.status == 'do' %}
@@ -56,6 +59,9 @@
                     {% endfor %}
                 </div>
                 <div class="column doing">
+                    <div class="task">   
+                        Doing
+                    </div>
                     {% for task in tasks %}
                         {% if task.archive == 0 %}
                             {% if task.status == 'doing' %}
@@ -85,6 +91,9 @@
                     {% endfor %}
                 </div>
                 <div class="column done">
+                    <div class="task">   
+                        Done
+                    </div>
                     {% for task in tasks %}
                         {% if task.archive == 0 %}
                             {% if task.status == 'done' %}
@@ -116,7 +125,7 @@
             </div>
 
             <div id="archives">
-                <h3>T&acirc;ches Archiv&eacute;es</h3>
+                <div class="archive">T&acirc;ches Archiv&eacute;es</div>
                 {% for task in tasks %}
                     {% if task.archive == 1 %}
                         
