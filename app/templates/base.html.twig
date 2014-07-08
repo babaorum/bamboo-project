@@ -22,7 +22,7 @@
                     Deconnexion
                 </a>
                 <div id="name">
-                {{app.session.user.lastname}} {{app.session.user.firstname}} 
+                {{app.session.user.firstname|capitalize}} {{app.session.user.lastname|upper}} 
                 </div>
             </nav>
     	</header>
