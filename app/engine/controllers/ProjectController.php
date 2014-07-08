@@ -7,6 +7,8 @@ use Walrus\core\WalrusHelpers;
 
 class ProjectController extends WalrusController
 {
+    protected $user = null;
+
     public function __construct()
     {
         parent::__construct();
@@ -15,9 +17,12 @@ class ProjectController extends WalrusController
         {
             $this->reroute('user', 'login');
         }
+        else
+        {
+            $this->user = $this->model('user')->getUser($_SESSION['user']['id']);
+        }
     }
     
-    //@todelete
     public function postProject()
     {
         $projectModel = $this->model('project');
@@ -35,7 +40,7 @@ class ProjectController extends WalrusController
         if ($id !== null)
         {
             $project = $projectModel->getProject($id);
-            if (!is_null($project))
+            if (!is_null($project) && $projectModel->checkProjectUserRelation($id, $this->user))
             {
                 $formUpdateHelper = WalrusHelpers::getHelper('FormUpdate', true);
                 $formFields = $formUpdateHelper->putDataIntoForm($formFields, $project);
@@ -59,10 +64,13 @@ class ProjectController extends WalrusController
     public function putProject($id)
     {
         $projectModel = $this->model('project');
-        $response = $projectModel->update($id);
-        if(!is_object($response) && $response !== false)
+        if($projectModel->checkProjectUserRelation($id, $this->user))
         {
-            $this->reroute('project', 'getFormProject', array($id, $response));
+            $response = $projectModel->update($id);
+            if(!is_object($response) && $response !== false)
+            {
+                $this->reroute('project', 'getFormProject', array($id, $response));
+            }
         }
         
         $this->go('/');
@@ -71,7 +79,10 @@ class ProjectController extends WalrusController
     public function deleteProject($id)
     {
         $projectModel = $this->model('project');
-        $response = $projectModel->delete($id);
+        if($projectModel->checkProjectUserRelation($id, $this->user))
+        {
+            $response = $projectModel->delete($id);
+        }
         
         $this->go('/');
     }
@@ -82,7 +93,7 @@ class ProjectController extends WalrusController
         $taskModel = $this->model('task');
 
         $project = $projectModel->getProject($id);
-        if(!is_null($project))
+        if(!is_null($project) && $projectModel->checkProjectUserRelation($id, $this->user))
         {
             $formTask = $taskModel->getForm();
             $tasks = $taskModel->getTasks($id);

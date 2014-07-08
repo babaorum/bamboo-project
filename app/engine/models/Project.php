@@ -108,14 +108,18 @@ class Project extends WalrusModel
         return $errors;
     }
 
-    public function checkProjectUserRelation($project, $user)
+    public function checkProjectUserRelation($project_id, $user)
     {
         $relation_exist = false;
-        foreach($project->sharedUsers as $userToProject)
+        $project = $this->getProject($project_id);
+        if(!is_null($project))
         {
-            if($userToProject->id === $user->id)
+            foreach($project->sharedUsers as $userToProject)
             {
-                $relation_exist = true;
+                if($userToProject->id === $user->id)
+                {
+                    $relation_exist = true;
+                }
             }
         }
         return $relation_exist;
@@ -123,7 +127,7 @@ class Project extends WalrusModel
 
     public function addUser($project, $user)
     {
-        if(!$this->checkProjectUserRelation($project, $user))
+        if(!$this->checkProjectUserRelation($project->id, $user))
         {
             $project->sharedUsers[] = $user;
             R::store($project);
