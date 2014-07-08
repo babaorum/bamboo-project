@@ -44,6 +44,7 @@ form
     border-color: #EEEEEE #DDDDDD #CCCCCC;
     background-color: #EFEFEF;
     padding: 10px;
+    margin: auto;
 }
 label
 {
@@ -55,4 +56,10 @@ input
 {
     display: inline-block;
     width: 170px;
+}
+#name
+{
+    font-family:"Source Sans Pro";
+    padding:15px;
+    float:left;
 }

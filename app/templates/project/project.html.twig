@@ -11,8 +11,10 @@
 
 
 {% block content %}
-    <h2>Vous &ecirc;tes sur la board du projet {{project.name}}</h2>
-    <h2>{{project.description}}</h2>
+    <div id="project">
+        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+        <p>{{project.description}}</p>
+    </div>
     <div>
         <ul class="errors">
             {% for errorTag in errors %}
@@ -22,47 +24,129 @@
             {% endfor %}
             </ul>
         </div>
-        <div>
-            <h3>T&acirc;ches</h3>
-            {% for task in tasks %}
-                {% if task.archive == 0 %}
-                   <div class="card-task">
-                        <div class="title-task {% if task.color is defined %} {{ task.color }} {% endif %}">
-                            {{task.name}}
-                            <div class="card-action">
-                                <a href="/tasks/archive/{{project.id}}/{{task.id}}/">
-                                    <img src="/assets/images/check.png" height="25">
-                                </a>
-                                &nbsp;
-                                <a href="/tasks/edit/{{project.id}}/{{task.id}}/">
-                                    <img src="/assets/images/edit.png" height="25">
-                                </a>
-                                &nbsp;
-                                <a href="/tasks/delete/{{project.id}}/{{task.id}}/">
-                                    <img src="/assets/images/close.png" height="25">
-                                </a>
+        <div id="cards">
+            <div id="active">
+                <div class="column do">
+                    <div class="task">   
+                        To Do
+                    </div>
+                    {% for task in tasks %}
+                        {% if task.archive == 0 %}
+                            {% if task.status == 'do' %}
+                               <div class="card-task">
+                                    <div class="title-task {% if task.color is defined %} {{ task.color }} {% endif %}">
+                                        {{task.name}}
+                                        <div class="card-action">
+                                            <a href="/tasks/archive/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/save.png" height="25">
+                                            </a>
+                                            &nbsp;
+                                            <a href="/tasks/edit/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/edit.png" height="25">
+                                            </a>
+                                            &nbsp;
+                                            <a href="/tasks/delete/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/close.png" height="25">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="information description">{{task.description}}</div>
+                                    <div class="information">Fin le {{task.deadline}}</div>
+                                    <div class="information">{{task.status}}</div>
+                               </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="column doing">
+                    <div class="task">   
+                        Doing
+                    </div>
+                    {% for task in tasks %}
+                        {% if task.archive == 0 %}
+                            {% if task.status == 'doing' %}
+                               <div class="card-task">
+                                    <div class="title-task {% if task.color is defined %} {{ task.color }} {% endif %}">
+                                        {{task.name}}
+                                        <div class="card-action">
+                                            <a href="/tasks/archive/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/save.png" height="25">
+                                            </a>
+                                            &nbsp;
+                                            <a href="/tasks/edit/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/edit.png" height="25">
+                                            </a>
+                                            &nbsp;
+                                            <a href="/tasks/delete/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/close.png" height="25">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="information description">{{task.description}}</div>
+                                    <div class="information">Fin le {{task.deadline}}</div>
+                                    <div class="information">{{task.status}}</div>
+                               </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="column done">
+                    <div class="task">   
+                        Done
+                    </div>
+                    {% for task in tasks %}
+                        {% if task.archive == 0 %}
+                            {% if task.status == 'done' %}
+                               <div class="card-task">
+                                    <div class="title-task {% if task.color is defined %} {{ task.color }} {% endif %}">
+                                        {{task.name}}
+                                        <div class="card-action">
+                                            <a href="/tasks/archive/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/save.png" height="25">
+                                            </a>
+                                            &nbsp;
+                                            <a href="/tasks/edit/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/edit.png" height="25">
+                                            </a>
+                                            &nbsp;
+                                            <a href="/tasks/delete/{{project.id}}/{{task.id}}/">
+                                                <img src="/assets/images/close.png" height="25">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="information description">{{task.description}}</div>
+                                    <div class="information">Fin le {{task.deadline}}</div>
+                                    <div class="information">{{task.status}}</div>
+                               </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="archives">
+                <div class="archive">T&acirc;ches Archiv&eacute;es</div>
+                {% for task in tasks %}
+                    {% if task.archive == 1 %}
+                        
+                       <div class="card-task">
+                            <div class="title-task {% if task.color is defined %} {{ task.color }} {% endif %}">
+                                {{task.name}}
+                                <div class="card-action">
+                                    <a href="/tasks/archive/{{project.id}}/{{task.id}}/">
+                                    &nbsp;
+                                    <a href="/tasks/delete/{{project.id}}/{{task.id}}/">
+                                        <img src="/assets/images/close.png" height="25">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="information description">{{task.description}}</div>
-                        <div class="information">Fin le {{task.deadline}}</div>
-                   </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div>
-            <h3>T&acirc;ches Archiv&eacute;es</h3>
-            {% for task in tasks %}
-                {% if task.archive == 1 %}
-                    <div>{{task.id}}</div>
-                    <div>{{task.name}}</div>
-                    <div>{{task.description}}</div>
-                    <div>{{task.color}}</div>
-                    <div>{{task.deadline}}</div>
-                    <a href="/tasks/delete/{{project.id}}/{{task.id}}/"><button>Supprimer</button></a>
-                    <br>
-                    <br>
-                {% endif %}
-            {% endfor %}
+                            <div class="information description">{{task.description}}</div>
+                            <div class="information">Fin le {{task.deadline}}</div>
+                            <div class="information">Derniere etape {{task.status}}</div>
+                       </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </fieldset>
 {% endblock %}
