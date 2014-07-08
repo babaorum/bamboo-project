@@ -90,6 +90,7 @@ class ProjectController extends WalrusController
             $this->register('formTask', $formTask->getFields());
             $this->register('tasks', $tasks);
             $this->register('project', $project->export());
+            $this->register('project_users', $project->sharedUsers);
             $this->setView('project');
         }
         else
@@ -98,21 +99,22 @@ class ProjectController extends WalrusController
         }
     }
 
-    public function addUserToProject($project_id, $email)
+    public function addUserToProject($id)
     {
         $projectModel = $this->model('project');
         $userModel = $this->model('user');
 
-        $project_id = $projectModel->getProject($project_id);
-        $user_id = $userModel->getUserByEmail($email);
+        $project = $projectModel->getProject($id);
+        if(!empty($_POST['mail']))
+        {
+            $user = $userModel->getUser($_POST['mail'], 'mail');
 
-        if (!is_null($project_id) && !is_null($user_id))
-        {
-            $project = $projectModel->addUser($project_id, $user_id);
+            if (!is_null($project) && !is_null($user))
+            {
+                $response = $projectModel->addUser($project, $user);
+            }
         }
-        else
-        {
-            $this->go('/');
-        }
+        
+        $this->reroute('project', 'boardProject', array($id));
     }
 }

@@ -52,14 +52,4 @@ class User extends WalrusModel
 
         return false;
     }
-
-    public function getUserByEmail($email)
-    {
-        $user = R::load('users', $email);
-        if ($user->id !== 0)
-        {
-            return $user;
-        }
-        return null;
-    }
 }

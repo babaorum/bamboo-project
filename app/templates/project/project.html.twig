@@ -11,7 +11,7 @@
 
 
 {% block content %}
-    
+    {{dump(project_users)}}
     <h2>Vous &ecirc;tes sur la board du projet {{project.name}}</h2>
     <h2>{{project.description}}</h2>
     <div>
@@ -89,6 +89,15 @@
                 {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}
             </div>
             <input type="submit" name="submit" value="Cr&eacute;er">
+        </form>
 
+        <form action="/projects/{{project.id}}/users" method="POST">
+            <input type="email" name="mail" placeholder="Email">
+            <input type="submit" name="submit" value="Ajouter">
+        </form>
+        <br>
+        {% for user in project_users %}
+            <img src="{{user.picture}}" alt="photo {{user.firstname}} {{user.lastname}}" title="{{user.firstname}} {{user.lastname}}" width="50" height="50">
+        {% endfor %}
     </div>
 {% endblock %}
