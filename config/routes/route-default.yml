@@ -11,6 +11,20 @@ _config:
     controller: ConfigController
     action: config
 
+loged:
+    path: log/:id
+    controller: UserController
+    action: loged
+    filters:
+        require:
+            id: '[\d-]+'
+
+logout:
+    path: logout
+    controller: UserController
+    action: logout
+    method: GET
+
 postProject:
     path: projects/create
     controller: ProjectController

@@ -1,10 +1,15 @@
-<html>
-<head>
-    <title>Bamboo Project</title>
-</head>
-<body>
-    <a href="/projects/{{project_id}}/"><button>Retour Projet</button></a>
-    <br><br>
+{% extends "base.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+
+    <title>{{project.name}}-Bamboo</title>
+    <link rel= "stylesheet" href= "/assets/styles/home.css"/>
+    <link rel= "stylesheet" href= "/assets/styles/rightbar.css"/>
+    <link rel= "stylesheet" href= "/assets/styles/tasks.css"/>
+{% endblock %}
+{% block content %}
+        <br><br>
     <ul class="errors">
         {% for errorTag in errors %}
             {% for error in errorTag %}
@@ -15,11 +20,18 @@
     <br>
     <form action="/tasks/update/{{project_id}}/{{task.id}}/" method="POST">
         <div>{{formTask.name.label}} : {{helpers.GetField.getFieldFilter(formTask.name)|raw}}</div>
+        </br>
         <div>{{formTask.description.label}} : {{helpers.GetField.getFieldFilter(formTask.description)|raw}}</div>
+        </br>
         <div>{{formTask.status.label}} : {{helpers.GetField.getFieldFilter(formTask.status)|raw}}</div>
+        </br>
         <div>{{formTask.color.label}} : {{helpers.GetField.getFieldFilter(formTask.color)|raw}}</div>
+        </br>
         <div>{{formTask.deadline.label}} : {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}</div>
+        </br>
         <input type="submit" name="submit" value="Modifier">
+        <a href="/projects/{{project_id}}/"><button>Retour Projet</button></a>
+
+
     </form>
-</body>
-</html>
+    {% endblock %}

@@ -7,6 +7,16 @@ use Walrus\core\WalrusHelpers;
 
 class ProjectController extends WalrusController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        
+        if (empty($_SESSION['user']['id']))
+        {
+            $this->reroute('user', 'login');
+        }
+    }
+    
     //@todelete
     public function postProject()
     {
