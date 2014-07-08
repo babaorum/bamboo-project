@@ -58,7 +58,7 @@ class TaskController extends WalrusController
                 $this->register('errors', $errors);
                 $this->register('task', $task->export());
                 $this->register('formTask', $formFields);
-                $this->setView('update');
+                return $this->setView('update');
             }
         }
         $this->reroute('project', 'boardProject', array($project_id));

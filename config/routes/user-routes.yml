@@ -1,0 +1,19 @@
+home:
+    path: ''
+    controller: UserController
+    action: home
+    method: GET
+
+loged:
+    path: log/:id
+    controller: UserController
+    action: loged
+    filters:
+        require:
+            id: '[\d-]+'
+
+logout:
+    path: logout
+    controller: UserController
+    action: logout
+    method: GET

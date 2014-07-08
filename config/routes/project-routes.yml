@@ -1,0 +1,48 @@
+boardProject:
+    path: projects/:id
+    controller: ProjectController
+    action: boardProject
+    filters:
+        require:
+            id: '[\d-]+'
+
+addUserToProject:
+    path: projects/:id/users
+    controller: ProjectController
+    action: addUserToProject
+    method: POST
+    filters:
+        require:
+            id: '[\d-]+'
+
+postProject:
+    path: projects/create
+    controller: ProjectController
+    action: postProject
+
+getFormProject:
+    path: projects/edit/:id
+    controller: ProjectController
+    action: getFormProject
+    method: GET
+    filters:
+        default:
+            id: null
+        require:
+            id: '[\d-]+'
+
+putProject:
+    path: projects/update/:id
+    controller: ProjectController
+    action: putProject
+    filters:
+        require:
+            id: '[\d-]+'
+
+deleteProject:
+    path: projects/delete/:id
+    controller: ProjectController
+    action: deleteProject
+    filters:
+        require:
+            id: '[\d-]+'
