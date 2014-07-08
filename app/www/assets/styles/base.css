@@ -56,3 +56,9 @@ input
     display: inline-block;
     width: 170px;
 }
+#name
+{
+    font-family:"Source Sans Pro";
+    padding:15px;
+    float:left;
+}
