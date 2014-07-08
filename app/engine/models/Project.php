@@ -34,6 +34,8 @@ class Project extends WalrusModel
     
     public function create()
     {
+        $userModel = $this->model('user');
+        $user = $userModel->getUser($_SESSION['user']['id']);
         $form = new WalrusForm('form_project');
         $errors = $this->check();
         
@@ -41,6 +43,7 @@ class Project extends WalrusModel
         {
             $project = R::dispense('projects');
             $project->import($_POST, 'name,description');
+            $project->sharedUsers[] = $user;
             R::store($project);
             return $project;
         }
