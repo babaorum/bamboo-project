@@ -4,7 +4,7 @@
         background-color: #ECE7CE;
         border: 1px solid;
         border-color: #AAAAAA #DDDDDD #E3DFD2;
-        margin: 20px 20px 0px 20px;
+        margin: 10px 50px;
         border-radius: 5px;
         display: inline-block;
     }
@@ -61,4 +61,14 @@
     	background-color: #FFDB99;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+    }
+
+/* Columns */
+    .column
+    {
+        margin: auto;
+        width: 33%;
+        float: left;
+        height: 500px;
+        overflow-y: scroll;
     }
