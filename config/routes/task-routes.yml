@@ -15,6 +15,15 @@ archiveTask:
             project_id: '[\d-]+'
             id: '[\d-]+'
 
+unarchiveTask:
+    path: tasks/unarchive/:project_id/:id
+    controller: TaskController
+    action: unarchiveTask
+    filters:
+        require:
+            project_id: '[\d-]+'
+            id: '[\d-]+'
+
 deleteTask:
     path: tasks/delete/:project_id/:id
     controller: TaskController

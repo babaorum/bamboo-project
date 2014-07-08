@@ -100,6 +100,18 @@ class Task extends WalrusModel
         return false;
     }
 
+    public function unarchive($id)
+    {
+        $task = $this->getTask($id);
+        if(!is_null($task))
+        {
+            $task->archive = false;
+            R::store($task);
+            return $task;
+        }
+        return false;
+    }
+
     public function delete($id)
     {
         $task = $this->getTask($id);
@@ -123,6 +135,10 @@ class Task extends WalrusModel
     {
         $errors = array();
         $task = R::findOne('tasks', 'name = :name AND projects_id = :project_id', [':name' => $_POST['name'], 'project_id' => $project_id]);
+        if (empty($_POST['name']))
+        {
+            $errors['name'] = 'Le nom ne doit pas être vide';
+        }
         if (!is_null($task) && ($exception == null || $task->name !== $exception))
         {
             $errors['name'][] = 'Le nom d\'une t&acirc;che doit &ecirc;tre unique'; 

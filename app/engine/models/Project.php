@@ -100,6 +100,11 @@ class Project extends WalrusModel
     {
         $errors = array();
         $project = R::findOne('projects', 'name = :name', [':name' => $_POST['name']]);
+        
+        if (empty($_POST['name']))
+        {
+            $errors['name'] = 'Le nom ne doit pas être vide';
+        }
         if (!is_null($project->name) && ($exception == null || $project->name !== $exception))
         {
             $errors['name'][] = 'Le nom d\'un projet doit &ecirc;tre unique'; 
