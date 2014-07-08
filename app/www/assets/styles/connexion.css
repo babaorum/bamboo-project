@@ -5,12 +5,7 @@
 	border:0; 
 
 }
-body, html
-{
-/*background:url('background.jpg') no-repeat;
-background-size:100% 100%;
-background-origin:center center;
-overflow:hidden;*/
+body, html{
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -25,8 +20,7 @@ overflow:hidden;*/
 	background-origin:center center;
 	overflow:hidden;
 }
-#connexion
-{
+#connexion{
 	width:250px;
 	height:auto;
 	margin: 350px auto 0 auto;
@@ -35,7 +29,7 @@ overflow:hidden;*/
 	text-align: center;
 }
 
-input#button{
+#button{
 	width: auto;
 	height: auto;
 	padding: 10px 20px;
@@ -44,11 +38,13 @@ input#button{
 	background-color:#ffffff;
 }
 
-input#button:hover{
+#button:hover{
 	color:#ffffff;
 	background-color:#909090;
 }
-/*background:/assets/images/background.jpg*/
+img{
+	padding-bottom:20px;
+}
 #logoBamboo {
 	width:200px;
 	height:auto;
