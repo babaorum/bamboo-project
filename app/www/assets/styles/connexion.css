@@ -3,15 +3,16 @@
 	margin:0;
 	padding:0;
 	border:0; 
-
 }
-body, html{
+body, html
+{
 	width: 100%;
 	height: 100%;
 	position: relative;
 }
 
-.wrapper{
+.wrapper
+{
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -20,34 +21,39 @@ body, html{
 	background-origin:center center;
 	overflow:hidden;
 }
-#connexion{
+#connexion
+{
 	width:250px;
 	height:auto;
 	margin: 350px auto 0 auto;
-	background-color:#73BD96;
+	background-color:#9BCFB4;
 	padding: 10px 10px 20px 10px ;
 	text-align: center;
+    border: 1px solid;
+    border-color: #AAAAAA #DDDDDD #E3DFD2;
+    border-radius: 5px;
 }
 
-#button{
+#button
+{
 	width: auto;
 	height: auto;
 	padding: 10px 20px;
-	position: relative;
-	color:#000000;
-	background-color:#ffffff;
+	background-color: #8AC7A7;
+	transition: background-color 0.3s;
+    border: 1px solid;
+    border-color: #AAAAAA #DDDDDD #E3DFD2;
+    border-radius: 5px;
 }
 
-#button:hover{
-	color:#ffffff;
-	background-color:#909090;
+#button:hover
+{
+	background-color: #73BD96;
 }
-img{
-	padding-bottom:20px;
-}
-#logoBamboo {
+#logoBamboo 
+{
 	width:200px;
 	height:auto;
 	position: relative;
-	margin: 0 auto;
+	margin: 20px auto;
 }

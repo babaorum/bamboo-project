@@ -12,7 +12,7 @@
 
 {% block content %}
     <div id="project">
-        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+        <h1>Projet {{project.name}}</h1>
         <p>{{project.description}}</p>
     </div>
     <div>
@@ -155,8 +155,8 @@
 
 {% block rightbar %}
     <div id="right-bar">
-        <div id="tools">Boite a outils</div>
-        <div class="form-title">Creation de tache</div>
+        <div id="tools">Bo&icirc;te &agrave; outils</div>
+        <div class="form-title">Cr&eacute;ation de t&acirc;che</div>
         <form action="/tasks/create/{{project.id}}/" method="POST">
             <div>
                 <label>{{formTask.name.label}} : </label>
