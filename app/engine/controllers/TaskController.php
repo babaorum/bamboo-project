@@ -92,6 +92,18 @@ class TaskController extends WalrusController
         $this->reroute('project', 'boardProject', array($project_id));
     }
 
+    public function unarchiveTask($project_id, $id)
+    {
+        $projectModel = $this->model('project');
+        $taskModel = $this->model('task');
+        if($projectModel->checkProjectUserRelation($project_id, $this->user))
+        {
+            $response = $taskModel->unarchive($id);
+        }
+
+        $this->reroute('project', 'boardProject', array($project_id));
+    }
+
     public function deleteTask($project_id, $id)
     {
         $projectModel = $this->model('project');

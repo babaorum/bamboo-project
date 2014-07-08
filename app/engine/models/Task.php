@@ -100,6 +100,18 @@ class Task extends WalrusModel
         return false;
     }
 
+    public function unarchive($id)
+    {
+        $task = $this->getTask($id);
+        if(!is_null($task))
+        {
+            $task->archive = false;
+            R::store($task);
+            return $task;
+        }
+        return false;
+    }
+
     public function delete($id)
     {
         $task = $this->getTask($id);
