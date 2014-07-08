@@ -3,13 +3,11 @@
 {% block head %}
     {{ parent() }}
 
-    <title>{{project.name}}-Bamboo</title>
+    <title>Mise a jour {{project.name}}-Bamboo</title>
     <link rel= "stylesheet" href= "/assets/styles/home.css"/>
-    <link rel= "stylesheet" href= "/assets/styles/rightbar.css"/>
-    <link rel= "stylesheet" href= "/assets/styles/tasks.css"/>
 {% endblock %}
-{% block content %}
 
+{% block content %}
     <ul class="errors">
         {% for errorTag in errors %}
             {% for error in errorTag %}
@@ -19,12 +17,11 @@
     </ul>
     <form action="/projects/update/{{project.id}}" method="POST" id="update">
         <div>
-            {{formProject.name.label}} : {{helpers.GetField.getFieldFilter(formProject.name)|raw}}
+            <label>{{formProject.name.label}} : </label>
+            {{helpers.GetField.getFieldFilter(formProject.name)|raw}}
         </div>
         <div>
-            {{formProject.description.label}} : 
-        </div>
-        <div>
+            <label>{{formProject.description.label}} : </label>
             {{helpers.GetField.getFieldFilter(formProject.description)|raw}}
         </div>
         <div style="clear:both;"></div>
