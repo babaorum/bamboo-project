@@ -25,6 +25,15 @@ logout:
     action: logout
     method: GET
 
+addUserToProject:
+    path: projects/:id/users
+    controller: ProjectController
+    action: addUserToProject
+    method: POST
+    filters:
+        require:
+            id: '[\d-]+'
+
 postProject:
     path: projects/create
     controller: ProjectController

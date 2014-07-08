@@ -11,17 +11,17 @@
 
 
 {% block content %}
-        <div id="project">
-            <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
-            <p>{{project.description}}</p>
-        </div>
-        <div>
-            <ul class="errors">
-                {% for errorTag in errors %}
-                    {% for error in errorTag %}
-                        <li>{{error}}</li>
-                    {% endfor %}
+    <div id="project">
+        <h1>Vous &ecirc;tes sur la board du projet {{project.name}}</h1>
+        <p>{{project.description}}</p>
+    </div>
+    <div>
+        <ul class="errors">
+            {% for errorTag in errors %}
+                {% for error in errorTag %}
+                    <li>{{error}}</li>
                 {% endfor %}
+            {% endfor %}
             </ul>
         </div>
         <div id="cards">
@@ -172,6 +172,15 @@
                 {{helpers.GetField.getFieldFilter(formTask.deadline)|raw}}
             </div>
             <input type="submit" name="submit" value="Cr&eacute;er">
+        </form>
 
+        <form action="/projects/{{project.id}}/users" method="POST">
+            <input type="email" name="mail" placeholder="Email">
+            <input type="submit" name="submit" value="Ajouter">
+        </form>
+        <br>
+        {% for user in project_users %}
+            <img src="{{user.picture}}" alt="photo {{user.firstname}} {{user.lastname}}" title="{{user.firstname}} {{user.lastname}}" width="50" height="50">
+        {% endfor %}
     </div>
 {% endblock %}

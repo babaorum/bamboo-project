@@ -90,11 +90,31 @@ class ProjectController extends WalrusController
             $this->register('formTask', $formTask->getFields());
             $this->register('tasks', $tasks);
             $this->register('project', $project->export());
+            $this->register('project_users', $project->sharedUsers);
             $this->setView('project');
         }
         else
         {
             $this->reroute('user', 'home');
         }
+    }
+
+    public function addUserToProject($id)
+    {
+        $projectModel = $this->model('project');
+        $userModel = $this->model('user');
+
+        $project = $projectModel->getProject($id);
+        if(!empty($_POST['mail']))
+        {
+            $user = $userModel->getUser($_POST['mail'], 'mail');
+
+            if (!is_null($project) && !is_null($user))
+            {
+                $response = $projectModel->addUser($project, $user);
+            }
+        }
+        
+        $this->reroute('project', 'boardProject', array($id));
     }
 }

@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="../assets/javascript/jquery-2.1.1.min"></script>
 		<script type="text/javascript" src="../assets/javascript/Walrus.js"></script>
         <script type="text/javascript" src="../assets/javascript/home.js"></script>
+         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
         {% endblock %}
 	</head>
     <body>
@@ -20,6 +21,9 @@
                 <a href="/logout/" id="logout">
                     Deconnexion
                 </a>
+                <div id="name">
+                {{app.session.user.firstname|capitalize}} {{app.session.user.lastname|upper}} 
+                </div>
             </nav>
     	</header>
     	<div id="content">

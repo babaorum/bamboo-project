@@ -4,7 +4,7 @@
 		height: 50px;
 		line-height: 50px;
 		padding: 0 10px;
-		float: left;
+		display:inline-block;
 		background-color: #8AC7A7;
 		transition: background-color 0.3s;
 		text-decoration: none;
